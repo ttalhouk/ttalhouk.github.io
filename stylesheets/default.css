@@ -1,0 +1,86 @@
+
+body {
+	
+}
+.wrapper {
+	width: 960px;
+	margin: 0px auto 0px auto;
+}
+.content{
+	width:720px;
+	float:left;
+}
+
+header{
+	margin: 10px;
+	
+	overflow:auto;
+}
+
+header img{
+float:left;
+}
+
+header h1{
+	text-align:center;
+}
+
+nav ul{
+	margin:10px;
+	padding:10px;
+	text-align:center;
+	border-bottom: 2px solid;
+}
+
+nav li{
+	display: inline;
+	padding: 10px 20px 10px 20px;
+}
+
+.main{
+	width:700px;
+	margin:10px;
+}
+
+article {
+	width: 340px;
+	margin: 10px;
+}
+
+article p{
+	text-align:justify;
+}
+
+article img{
+	margin: 5px auto 5px auto;
+}
+.dev{
+	float:left;
+}
+
+.cohort {
+	float:right;
+}
+
+aside{
+	width: 200px;
+	margin: 0px 10px 0px 10px;
+	float:right;
+	clear:none;
+}
+
+footer{
+	height:60px;
+	clear:both;
+	margin:10px;
+}
+
+footer span{
+	vertical-align:bottom;
+}
+
+.social{
+	margin:5px;
+	float:right;
+	
+}
