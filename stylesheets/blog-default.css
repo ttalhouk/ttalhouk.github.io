@@ -17,10 +17,9 @@ p,a,li{
 	margin: 0px auto 0px auto;
 	background-color:#DAE9FF;
 }
-.content{
+.entrys{
 	width:720px;
 	float:left;
-	background-color:#DAE9FF;
 }
 
 
@@ -31,18 +30,17 @@ header{
 
 header img{
 float:left;
-z-index:10;
-
+margin:10px 0px 10px 0px;
 }
 
 header h1{
+	font-size:42px;
 	text-align:center;
-	font-size:40px;
+	margin:10px 0px 10px 0px;
 }
 
 nav{
-   position: relative;
-   top: 55px; 
+   clear:both
    
 }
 
@@ -61,16 +59,11 @@ nav li{
 	padding: 10px 20px 10px 20px;
 }
 
-.main{
-	width:700px;
-	margin:10px;
-	
-}
 
 article {
-	width: 340px;
-	margin: 10px;
-	overflow:auto;
+	width:700px;
+	margin:10px;
+	background-color:#DAE9FF;
 }
 
 article p{
@@ -82,13 +75,6 @@ article img{
 	margin: 0px auto;
 }
 
-.dev{
-	float:left;
-}
-
-.cohort {
-	float:right;
-}
 
 aside{
 	width: 200px;
