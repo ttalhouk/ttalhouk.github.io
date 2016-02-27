@@ -68,9 +68,11 @@ nav li:hover{
 nav li{
 	display: inline;
 	padding: 10px 20px 10px 20px;
+	font-family: 'Montserrat', sans-serif;
 }
 li a{
 	text-decoration:none;
+	font-family: 'Montserrat', sans-serif;
 }
 .main{
 	width:700px;
@@ -110,6 +112,9 @@ aside{
 	background-color:#FEFF5C;
 	border-top-left-radius:70px 30px;
 	border:2px solid;
+	border-right:5px solid black;
+	border-bottom:5px solid black;
+	text-align:justify;
 }
 
 footer{
