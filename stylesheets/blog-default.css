@@ -1,6 +1,6 @@
 
 body {
-	background-color: #475E7F;
+	background-color: #475E7F; /*dark blue*/
 }
 
 h1,h2,h3,h4,h5,h6{
@@ -10,18 +10,42 @@ h1,h2,h3,h4,h5,h6{
 p,a,li{
 	font-family: 'Noto Serif', serif;
 	font-size:14px;
+	text-decoration:none;
 }
 
 .wrapper {
 	width: 960px;
 	margin: 0px auto 0px auto;
-	background-color:#DAE9FF;
+	background-color:white;
+	/* background-color:#DAE9FF; light blue*/
 }
 .entrys{
 	width:720px;
 	float:left;
 }
+.blog article{
+	width:940px;
+	margin:10px;
+	float:left;
+}
 
+.entrys article:hover{
+	/*background-color:#E5E0BC; brown*/
+	background-color:#96FFAE;
+	border-style:outset;
+	
+}
+
+.entrys article{
+	border:2px solid grey;
+	background-color:#DAE9FF;
+	border-radius: 10px;
+	margin:10px;
+}
+.entrys article *{
+	margin-left:10px;
+	
+}
 
 header{
 	margin: 10px;
@@ -36,7 +60,7 @@ margin:10px 0px 10px 0px;
 header h1{
 	font-size:42px;
 	text-align:center;
-	margin:10px 0px 10px 0px;
+	margin:15px 0px 10px 0px;
 }
 
 nav{
@@ -59,11 +83,19 @@ nav li{
 	padding: 10px 20px 10px 20px;
 }
 
+nav li:hover{
+	background-color:#DAE9FF;
+}
+
+.current{
+	background-color:#96FFAE;
+}
 
 article {
 	width:700px;
 	margin:10px;
-	background-color:#DAE9FF;
+	background-color:white;
+	/* background-color:#DAE9FF; */
 }
 
 article p{
@@ -104,4 +136,35 @@ footer span{
 	margin:5px;
 	float:right;
 	
+}
+
+.code{
+	background-color:#CCE2E5;
+	border: 2px solid red;
+	border-radius:8px;
+	padding: 0px 3px 2px 3px;
+	font-weight:bold;
+	color:red;
+	
+}
+.cap{
+	font-size:20px;
+	font-weight:bold;
+}
+#exp{
+	font-size:72px;
+	text-align:center;
+}
+.codeblk{
+	line-height:2em; 
+}
+.align-left{
+	float:left;
+}
+.blog img{
+	padding:5px;
+}
+
+hgroup{
+	border-bottom:4px solid;
 }

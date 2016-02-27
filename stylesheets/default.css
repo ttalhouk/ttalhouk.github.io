@@ -15,12 +15,13 @@ p,a,li{
 .wrapper {
 	width: 960px;
 	margin: 0px auto 0px auto;
-	background-color:#DAE9FF;
+	background-color:white;
+	/*background-color:#DAE9FF; light blue*/
 }
 .content{
 	width:720px;
 	float:left;
-	background-color:#DAE9FF;
+	background-color:white;
 }
 
 
@@ -54,13 +55,23 @@ nav ul{
 	border-bottom: 2px solid;
 	overflow:hidden;
 	background-color:#8EBCFF;
+	
 }
 
+nav li:hover{
+	background-color:#DAE9FF;
+}
+
+.current{
+	background-color:#96FFAE;
+}
 nav li{
 	display: inline;
 	padding: 10px 20px 10px 20px;
 }
-
+li a{
+	text-decoration:none;
+}
 .main{
 	width:700px;
 	margin:10px;
