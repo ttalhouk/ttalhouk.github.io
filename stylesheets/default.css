@@ -1,10 +1,12 @@
 
-body {
+html, body {
 	background-color: #475E7F;
+	height:100%;
 }
 
 h1,h2,h3,h4,h5,h6{
 	font-family: 'Montserrat', sans-serif;
+	margin-top:5px;
 }
 
 p,a,li{
@@ -14,8 +16,12 @@ p,a,li{
 
 .wrapper {
 	width: 960px;
-	margin: 0px auto 0px auto;
+	min-height:100%;
+	height:auto !important;
+	height:100%;
+	margin: 0px auto -60px;
 	background-color:white;
+	overflow:auto;
 	/*background-color:#DAE9FF; light blue*/
 }
 .content{
@@ -31,14 +37,20 @@ header{
 }
 
 header img{
-float:left;
-z-index:10;
+	float:left;
+	z-index:10;
 
 }
 
 header h1{
 	text-align:center;
 	font-size:40px;
+	margin:0px;
+}
+header h2{
+	text-align:center;
+	font-size:25px;
+	margin:0px;
 }
 
 nav{
@@ -118,12 +130,14 @@ aside{
 }
 
 footer{
-	height:60px;
-	clear:both;
-	margin:0px;
+	width:960px;
+	margin:0px auto;
 	background-color:#8EBCFF;
 }
-
+footer, .push{
+	height:60px;
+	clear:both;
+}
 footer span{
 	position:relative;
 	top:20px;

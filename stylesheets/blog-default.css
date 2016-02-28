@@ -1,6 +1,7 @@
 
-body {
+html, body {
 	background-color: #475E7F; /*dark blue*/
+	height:100%;
 }
 
 h1,h2,h3,h4,h5,h6{
@@ -15,9 +16,13 @@ p,a,li{
 
 .wrapper {
 	width: 960px;
-	margin: 0px auto 0px auto;
+	min-height:100%;
+	height:auto !important;
+	height:100%;
+	margin: 0px auto -60px;
 	background-color:white;
-	/* background-color:#DAE9FF; light blue*/
+	overflow:auto;
+	/*background-color:#DAE9FF; light blue*/
 }
 .entrys{
 	width:720px;
@@ -41,6 +46,7 @@ p,a,li{
 	background-color:#DAE9FF;
 	border-radius: 10px;
 	margin:10px;
+	overflow:auto;
 }
 .entrys article *{
 	margin: 5px 10px 5px 10px;
@@ -53,8 +59,8 @@ header{
 }
 
 header img{
-float:left;
-margin:10px 0px 10px 0px;
+	float:left;
+	margin:10px 0px 10px 0px;
 }
 
 header h1{
@@ -112,6 +118,12 @@ article img{
 	margin: 0px auto;
 }
 
+.entrys img{
+	width:150px;
+	margin:5px;
+	float:left;
+}
+
 
 aside{
 	width: 200px;
@@ -128,10 +140,13 @@ aside{
 }
 
 footer{
+	width:960px;
+	margin:0px auto;
+	background-color:#8EBCFF;
+}
+footer, .push{
 	height:60px;
 	clear:both;
-	margin:0px;
-	background-color:#8EBCFF;
 }
 
 footer span{
