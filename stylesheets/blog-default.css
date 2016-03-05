@@ -34,6 +34,10 @@ p,a,li{
 	float:left;
 }
 
+article h2{
+	clear:both;
+}
+
 .entrys article:hover{
 	/*background-color:#E5E0BC; brown*/
 	background-color:#96FFAE;
@@ -70,7 +74,7 @@ header h1{
 }
 
 nav{
-   clear:both
+   clear:both;
    
 }
 
@@ -161,6 +165,36 @@ footer span{
 	
 }
 
+.code{
+	background-color:#CCE2E5;
+	border: 2px solid red;
+	border-radius:8px;
+	padding: 0px 3px 2px 3px;
+	font-weight:bold;
+	color:red;
+	
+}
+.cap{
+	font-size:20px;
+	font-weight:bold;
+}
+#exp{
+	font-size:72px;
+	text-align:center;
+}
+.codeblk{
+	line-height:2em; 
+}
+.align-left{
+	float:left;
+}
+.blog img{
+	padding:5px;
+}
+
+hgroup{
+	border-bottom:4px solid;
+}
 .code{
 	background-color:#CCE2E5;
 	border: 2px solid red;
