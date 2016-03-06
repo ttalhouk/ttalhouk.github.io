@@ -1,78 +1,76 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Talal's Developer Blog</title>
-	<meta name="author" content="Talal Talhouk" />
-	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="../stylesheets/blog-default.css">
-	<link href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
-	<link href='https://fonts.googleapis.com/css?family=Noto+Serif' rel='stylesheet' type='text/css'>
-</head>
-<body>
-<div class="wrapper">
-<header class="blog">
-	<img src="../imgs/BlogTitle.gif" alt="Blog Title" title="Talal's Blog" width="470" height="60" />
-	<h1>Week 3</h1>
-	<nav>
-		<ul>
-			<li><a href="../index.html">Home</a></li>
-			<li><!-- <a href="#">-->About Me<!--</a>--></li>
-			<li class="current"><a href="blog-index.html" >Blog</a></li>
-			<li><!--<a href="#">-->Projects<!--</a>--></li>
-			<li><!--<a href="#">-->Resume<!--</a>--></li>
-			<li><!--<a href="#">-->Contact<!--</a>--></li>
-		</ul>
-	</nav>
+	<head>
+		<title>Talal's Developer Blog</title>
+		<meta name="author" content="Talal Talhouk" />
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="../stylesheets/blog-default.css">
+		<link href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Noto+Serif' rel='stylesheet' type='text/css'>
+	</head>
+	<body>
+		<div class="wrapper">
+			<header class="blog">
+				<img src="../imgs/BlogTitle.gif" alt="Blog Title" title="Talal's Blog" width="470" height="60" />
+				<h1>Week 3</h1>
+				<nav>
+					<ul>
+						<li><a href="../index.html" >Home</a></li>
+						<li><a href="../about.html">About Me</a></li>
+						<li class="current"><a href="blog-index.html">Blog</a></li>
+						<li><a href="../proj.html">Projects</a></li>
+						<li><a href="../res.html">Resume</a></li>
+						<li><a href="../contact.html">Contact</a></li>
+					</ul>
+				</nav>
+			<div class="blog">
+				<article>
+					<hgroup>
+					<h1>Blog Entry Week 3: CSS</h1>
+					<h2>Not Just Boring Text Anymore</h2>
+					<h3>February 25, 2016</h3>
+					</hgroup>
+					
+					<img src="../imgs/css.jpg" alt="CSS" height="150" class="align-left" />
+					<p class="codeblk">This week we've added styling to our site using <abbr title="Cascading Style Sheets">CSS</abbr>.  So now you are saying "that's great, but what does that mean?"  Well CSS 
+					stands for <span class="cap">C</span>ascading <span class="cap">S</span>tyle <span class="cap">S</span>heets and controls the look and layout of an HTML page.  It takes all those tags 
+					and gives them some type of styling like <span class="code">p{font-size:72px;}</span> will turn something like <span class="code">&lt;p&gt;text&lt;/p&gt;</span> into... <br /> 
+					<div id="exp">text</div></p>
+					
+					<p class="codeblk">Pretty cool huh!  Well that's not all. Each element of a page has an invisible border around (though you can use CSS to show the border!) to keep parts of a page from 
+					running into each other but you may be asking how can I control the space that this border takes up, well CSS can help with that too through <span class="code">margin</span> &amp; <span class="code">padding</span>.  
+					Let's take a look at this diagram:</p>
+					
+					<img src="../imgs/margin-padding.gif" alt="Margin and Padding diagram" />
+					
+					<p class="codeblk">CSS is also used to position items on the page and tell the page how other blocks of information 
+					should interact with them, like that CSS image at the top.  By using <span class="code">img{float:left;}</span> it told the page to push the image to 
+					the left and have all the text wrap around it. Pretty useful to make things flow nicely.</p>
+					
+					<p class="codeblk">You can also move blocks around from their default positions by using the you guessed it... <span class="code">position</span> property.  Positions can be relitive 
+					using <span class="code">position: relitive</span> followed by <span class="code">top: (N)px</span> meaning move the top of this object N pixels from where it normally would be. 
+					Alternatively, using <span class="code">position: absolute</span> followed by <span class="code">top: (N)px</span> tells the page to place this N pixels from the top of the page 
+					no matter what else is there!</p>
+					
+					<p class="codeblk">All this can get pretty confusing if your page becomes fairly complicated with many boxes and elements, so I've found that using the the Developer Tools on Google Chrome
+					helps you visualize what is acting on what so you can pick the right tool to make you site look the way you want.</p>
+					
+					<img src="../imgs/devtool.gif" alt="Google Developer Tools" width="900" />
+					
+					<p class="codeblk">There are many other topics to cover on CSS that I can't possibly cover them all in one post. But if you want to add it there's probably a way to do it.  Any
+					 tricks you've found.  Send me an email and let me know.  Thanks for reading!</p>
+				</article>
+			</div>
+			<div class="push"></div>
+		</div>
+		<footer>
+			<a href="mailto:talal@sbcglobal.net"><span>Email:talal@sbcglobal.net</span></a>
+			<div class="social">
+			<a href="https://www.facebook.com/talal.talhouk"><img src="../imgs/facebookicon.gif" width="50" height="50"></a>
+			<a href="https://www.linkedin.com/in/talaltalhouk?trk=hp-identity-name"><img src="../imgs/LinkedinIcon.gif" width="50" height="50"></a>
+			<a href="https://github.com/ttalhouk"><img src="../imgs/github-circled.gif" width="50" height="50"></a>
+			</div>
+		</footer>
 
-</header>
-<div class="blog">
-	<article>
-		<hgroup>
-		<h1>Blog Entry Week 3: CSS</h1>
-		<h2>Not Just Boring Text Anymore</h2>
-		<h3>February 25, 2016</h3>
-		</hgroup>
-		
-		<img src="../imgs/css.jpg" alt="CSS" height="150" class="align-left" />
-		<p class="codeblk">This week we've added styling to our site using <abbr title="Cascading Style Sheets">CSS</abbr>.  So now you are saying "that's great, but what does that mean?"  Well CSS 
-		stands for <span class="cap">C</span>ascading <span class="cap">S</span>tyle <span class="cap">S</span>heets and controls the look and layout of an HTML page.  It takes all those tags 
-		and gives them some type of styling like <span class="code">p{font-size:72px;}</span> will turn something like <span class="code">&lt;p&gt;text&lt;/p&gt;</span> into... <br /> 
-		<div id="exp">text</div></p>
-		
-		<p class="codeblk">Pretty cool huh!  Well that's not all. Each element of a page has an invisible border around (though you can use CSS to show the border!) to keep parts of a page from 
-		running into each other but you may be asking how can I control the space that this border takes up, well CSS can help with that too through <span class="code">margin</span> &amp; <span class="code">padding</span>.  
-		Let's take a look at this diagram:</p>
-		
-		<img src="../imgs/margin-padding.gif" alt="Margin and Padding diagram" />
-		
-		<p class="codeblk">CSS is also used to position items on the page and tell the page how other blocks of information 
-		should interact with them, like that CSS image at the top.  By using <span class="code">img{float:left;}</span> it told the page to push the image to 
-		the left and have all the text wrap around it. Pretty useful to make things flow nicely.</p>
-		
-		<p class="codeblk">You can also move blocks around from their default positions by using the you guessed it... <span class="code">position</span> property.  Positions can be relitive 
-		using <span class="code">position: relitive</span> followed by <span class="code">top: (N)px</span> meaning move the top of this object N pixels from where it normally would be. 
-		Alternatively, using <span class="code">position: absolute</span> followed by <span class="code">top: (N)px</span> tells the page to place this N pixels from the top of the page 
-		no matter what else is there!</p>
-		
-		<p class="codeblk">All this can get pretty confusing if your page becomes fairly complicated with many boxes and elements, so I've found that using the the Developer Tools on Google Chrome
-		helps you visualize what is acting on what so you can pick the right tool to make you site look the way you want.</p>
-		
-		<img src="../imgs/devtool.gif" alt="Google Developer Tools" width="900" />
-		
-		<p class="codeblk">There are many other topics to cover on CSS that I can't possibly cover them all in one post. But if you want to add it there's probably a way to do it.  Any
-		 tricks you've found.  Send me an email and let me know.  Thanks for reading!</p>
-	</article>
-</div>
-<div class="push"></div>
-</div>
-<footer>
-	<a href="mailto:talal@sbcglobal.net"><span>Email:talal@sbcglobal.net</span></a>
-	<div class="social">
-	<a href="https://www.facebook.com/talal.talhouk"><img src="../imgs/facebookicon.gif" width="50" height="50"></a>
-	<a href="https://www.linkedin.com/in/talaltalhouk?trk=hp-identity-name"><img src="../imgs/LinkedinIcon.gif" width="50" height="50"></a>
-	<a href="https://github.com/ttalhouk"><img src="../imgs/github-circled.gif" width="50" height="50"></a>
-	</div>
-</footer>
-
-</body>
+	</body>
 </html>
