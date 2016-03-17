@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Talal's Developer Blog</title>
+		<meta name="author" content="Talal Talhouk" />
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="../stylesheets/blog-default.css">
+		<link href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Noto+Serif' rel='stylesheet' type='text/css'>
+	</head>
+	<body>
+		<div class="wrapper">
+			<header class="blog">
+				<img src="../imgs/BlogTitle.gif" alt="Blog Title" title="Talal's Blog" width="470" height="60" />
+				<h1>Week 6</h1>
+				<nav>
+					<ul>
+						<li><a href="../index.html" >Home</a></li>
+						<li><a href="../about.html">About Me</a></li>
+						<li class="current"><a href="blog-index.html">Blog</a></li>
+						<li><a href="../proj.html">Projects</a></li>
+						<li><a href="../res.html">Resume</a></li>
+						<li><a href="../contact.html">Contact</a></li>
+					</ul>
+				</nav>
+
+			</header>
+			<div class="blog">
+				<article>
+					<hgroup>
+					<h1>Blog Entry Week 6: Ruby</h1>
+					<h2>Classes</h2>
+					<h3>March 16, 2016</h3>
+					</hgroup>
+					
+					<img src="../imgs/class-chalk.gif" alt="Classes" height="150" class="align-left" />
+					
+					<p class="codeblk">So if you start to learn to code long enough you are guarantee to hear about object oriented programming.  So what does that really imply? 
+					Well object oriented programming basically looks at everything as an object, like a ball or an anaimal and then you define what that object can do.  However animals 
+					and balls don't really have all that much in common which is why the concept of <span class="code">class</span> is important.</p>
+					
+					<h2>Gettin Classy</h2>
+					
+					<p class="codeblk">So <a href="enumarable-methods.html">last week</a> we learned about methods and specifically enumarable methods which define a lot of what our program 
+					will do, however we can't really do anything to nothing so we have to create an object.  Using our previous example we can make a ball by creating a ball class. 
+					We also want to think about what type of attributes we want to define our ball.  This is done like this...</p>
+					
+					<script src="https://gist.github.com/ttalhouk/82d5a44c96062349f9f9.js"></script>
+					
+					<p class="codeblk">Great, we've defined our ball objects which are basically a collection of two variables diameter and color.  But did you notice that funky @ symbol 
+					infront of the variables? That made those variables, instance variables.  This allows those variables to be accessed within the class.  So for instance lets say I want 
+					to create a method that deflates the ball then I would do this...</p>
+					
+					<script src="https://gist.github.com/ttalhouk/9c457ec4015d6324c977.js"></script>
+					<figure>
+						<img src="../imgs/brady.gif" alt="Tom Brady" title="Classy Tom" width="400" />
+						<br />
+						<figcaption>
+						"Now that's Class-y"
+						</figcaption>
+					</figure>
+					
+					<p class="codeblk">So I hope that was an informative peek at classes and objects. Of course this just scratches the surface, but I hope it demonstrated how to create 
+					classes of objects and how to pass information between the class methods and calling them from outside the class.
+					</p>
+					
+					<p class="codeblk">Did you find this example useful or are you a Patriots fan...  Send me a message below!  Thanks for reading.</p>
+					
+				</article>
+			</div>
+			<div class="push"></div>
+		</div>
+		<footer>
+			<a href="mailto:talal@sbcglobal.net"><span>Email:talal@sbcglobal.net</span></a>
+			<div class="social">
+			<a href="https://www.facebook.com/talal.talhouk"><img src="../imgs/facebookicon.gif" width="50" height="50"></a>
+			<a href="https://www.linkedin.com/in/talaltalhouk?trk=hp-identity-name"><img src="../imgs/LinkedinIcon.gif" width="50" height="50"></a>
+			<a href="https://github.com/ttalhouk"><img src="../imgs/github-circled.gif" width="50" height="50"></a>
+			</div>
+		</footer>
+
+	</body>
+</html>
