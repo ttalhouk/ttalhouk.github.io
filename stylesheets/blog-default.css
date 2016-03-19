@@ -195,6 +195,10 @@ footer span{
 hgroup{
 	border-bottom:4px solid;
 }
+hgroup.about{
+	width:700px;
+	border-bottom:4px solid;
+}
 
 figcaption {
 	text-align:center;
