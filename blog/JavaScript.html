@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Talal's Developer Blog</title>
+		<meta name="author" content="Talal Talhouk" />
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="../stylesheets/blog-default.css">
+		<link href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Noto+Serif' rel='stylesheet' type='text/css'>
+	</head>
+	<body>
+		<div class="wrapper">
+			<header class="blog">
+				<img src="../imgs/BlogTitle.gif" alt="Blog Title" title="Talal's Blog" width="470" height="60" />
+				<h1>Week 7</h1>
+				<nav>
+					<ul>
+						<li><a href="../index.html" >Home</a></li>
+						<li><a href="../about.html">About Me</a></li>
+						<li class="current"><a href="blog-index.html">Blog</a></li>
+						<li><a href="../proj.html">Projects</a></li>
+						<li><a href="../res.html">Resume</a></li>
+						<li><a href="../contact.html">Contact</a></li>
+					</ul>
+				</nav>
+
+			</header>
+			<div class="blog">
+				<article>
+					<hgroup>
+					<h1>Blog Entry Week 7: JavaScript</h1>
+					<h2>Ruby Hashes vs JavaScript Objects</h2>
+					<h3>March 24, 2016</h3>
+					</hgroup>
+					
+					<img src="../imgs/JS.gif" alt="Classes" height="150" class="align-left" />
+					
+					<p class="codeblk">This week we dipped our feet in the JavaScript pool. It was a bit jarring when transfering from Ruby but after getting over the 
+					initial shock of it there are many similarities.  One of which is hashes in Ruby are quite similar to JavaScrips objects as they both contain 
+					keys and values that are accessed by those keys but there are a few differences that are important to keep in mind.</p>
+					
+					<h2>Hashes vs Objects What's the Difference?</h2>
+					
+					<p class="codeblk">So in <b>Ruby</b> information can be stored in hashes as a sort of unordered list.  These are useful for keeping data organized 
+					in logical ways.  For instance if you are describing your pet, you would create a hash that contains that information like so...</p>
+					
+					<script src="https://gist.github.com/ttalhouk/27512f50c12424d3a866.js"></script>
+					
+					<p class="codeblk">So our dog Sparky is defined and has key value pairs that can be accessed by calling the <span class="code">hash[key]</span> which is 
+					great.  Whenever we need to access that information we can call it up like that instead of an array which would be just a an index value which wouldn'd make 
+					much sense.  However the hash doesn't inherently do anything but Ruby does have many build in methods for iterating through the hash to check for values which 
+					is more difficult to do in JavaScript.</p>
+					
+					<p class="codeblk">But <b>JavaScript</b> is defined much the same way as Ruby, however JavaScript you can include functions so that they can do things.  Let's 
+					take a look at a similar Sparky object in JavaScript.</p>
+					
+					<script src="https://gist.github.com/ttalhouk/4244b40a409a7e62037b.js"></script>
+
+					
+					<p class="codeblk">Good boy Sparky!!!</p>
+					
+					<p class="codeblk">Did you find this example useful...  Send me a message below!  Thanks for reading.</p>
+					
+				</article>
+			</div>
+			<div class="push"></div>
+		</div>
+		<footer>
+			<a href="mailto:talal@sbcglobal.net"><span>Email:talal@sbcglobal.net</span></a>
+			<div class="social">
+			<a href="https://www.facebook.com/talal.talhouk"><img src="../imgs/facebookicon.gif" width="50" height="50"></a>
+			<a href="https://www.linkedin.com/in/talaltalhouk?trk=hp-identity-name"><img src="../imgs/LinkedinIcon.gif" width="50" height="50"></a>
+			<a href="https://github.com/ttalhouk"><img src="../imgs/github-circled.gif" width="50" height="50"></a>
+			</div>
+		</footer>
+
+	</body>
+</html>
