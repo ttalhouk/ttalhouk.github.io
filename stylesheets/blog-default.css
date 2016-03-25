@@ -197,13 +197,38 @@ footer span{
 
 hgroup{
 	border-bottom:4px solid;
+	margin: 0px, 10px, 0px, 10px;
 }
-hgroup.about{
-	width:700px;
-	border-bottom:4px solid;
+hgroup.about {
+    width: 700px;
+    margin-left: 10px;
+    border-bottom: 4px solid;
+}
+hgroup.project {
+    width: 700px;
+    margin-left: 10px;
+    border-bottom: 4px solid;
 }
 
 figcaption {
 	text-align:center;
 	font-weight:bold;
+}
+.project article:hover{
+	/*background-color:#E5E0BC; brown*/
+	background-color:#96FFAE;
+	border-style:outset;
+	
+}
+
+.project article{
+	border:2px solid grey;
+	background-color:#DAE9FF;
+	border-radius: 10px;
+	margin:10px;
+	overflow:auto;
+}
+.project article *{
+	margin: 5px 10px 5px 10px;
+	
 }
