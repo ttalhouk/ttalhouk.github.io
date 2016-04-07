@@ -1,6 +1,15 @@
 
 html, body {
 	background-color: #475E7F;
+	/*
+	background-image: url("../imgs/cedar.jpg");
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-position-x: 50%;
+    background-position-y: 100%;
+    background-size: 100%;
+    background-attachment: fixed;
+	*/
 	height:100%;
 }
 
@@ -15,6 +24,7 @@ p,a,li{
 }
 
 .wrapper {
+	border-radius:20px;
 	width: 960px;
 	min-height:100%;
 	height:auto !important;
@@ -66,11 +76,12 @@ nav ul{
 	text-align:center;
 	border-bottom: 2px solid;
 	overflow:hidden;
-	background-color:#8EBCFF;
+	/*background-color:#8EBCFF;*/
 	
 }
 
 nav li:hover{
+	-webkit-transition: all 0.5s ease-out;
 	background-color:#DAE9FF;
 }
 
@@ -78,6 +89,7 @@ nav li:hover{
 	background-color:#96FFAE;
 }
 nav li{
+	border-radius: 10px;
 	display: inline;
 	padding: 10px 20px 10px 20px;
 	font-family: 'Montserrat', sans-serif;
@@ -130,6 +142,7 @@ aside{
 }
 
 footer{
+	border-radius:20px;
 	width:960px;
 	margin:0px auto;
 	background-color:#8EBCFF;
