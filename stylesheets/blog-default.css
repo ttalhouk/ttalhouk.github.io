@@ -18,6 +18,7 @@ p,a,li{
 }
 
 .wrapper {
+	border-radius:20px;
 	width: 960px;
 	min-height:100%;
 	height:auto !important;
@@ -46,9 +47,11 @@ article h2{
 	background-color:#96FFAE;
 	border-style:outset;
 	
+	
 }
 
 .entrys article{
+	-webkit-transition: all 0.75s ease-out;
 	border:2px solid grey;
 	background-color:#DAE9FF;
 	border-radius: 10px;
@@ -88,13 +91,15 @@ nav ul{
 	text-align:center;
 	border-bottom: 2px solid;
 	overflow:hidden;
-	background-color:#8EBCFF;
+	
+	/*background-color:#8EBCFF;*/
 }
 
 nav li{
 	display: inline;
 	padding: 10px 20px 10px 20px;
 	font-family: 'Montserrat', sans-serif;
+	border-radius: 10px;
 }
 li a{
 	text-decoration:none;
@@ -103,6 +108,7 @@ li a{
 
 nav li:hover{
 	background-color:#DAE9FF;
+	-webkit-transition: all 0.5s ease-out;
 }
 
 .current{
@@ -147,6 +153,7 @@ aside{
 }
 
 footer{
+	border-radius:20px;
 	width:960px;
 	margin:0px auto;
 	background-color:#8EBCFF;
