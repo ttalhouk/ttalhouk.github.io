@@ -1,39 +1,57 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Talal's Developer Page</title>
 		<meta name="description" content="Talal's personal webpage" />
 		<meta name="author" content="Talal Talhouk" />
-		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="stylesheets/default.css">
+		<!-- <link rel="stylesheet" type="text/css" href="stylesheets/default.css"> -->
+		<link href="stylesheets/index.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
 		<link href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
 		<link href='https://fonts.googleapis.com/css?family=Noto+Serif' rel='stylesheet' type='text/css'>
 	</head>
 	<body>
 		<div class="wrapper">
 			<header>
-				<img src="imgs/talal-200.gif" alt="Talal's Picture" title="Hello!" width="200" height="200" />
 				<h1>Talal Talhouk</h1>
 				<h2>Web Developer</h2>
-				<nav>
-					<ul>
-						<li class="current"><a href="index.html" >Home</a></li>
-						<li><a href="about.html">About Me</a></li>
-						<li><a href="blog/blog-index.html">Blog</a></li>
-						<li><a href="proj.html">Projects</a></li>
-						<li><a href="res.html">Resume</a></li>
-						<li><a href="contact.html">Contact</a></li>
-					</ul>
+				<nav class="navbar navbar-default navbar-fixed-top navbar-dark bg-primary">
+					<div class="container-fluid">
+	<!-- Brand and toggle get grouped for better mobile display -->
+						<div class="navbar-header">
+							<!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button> -->
+							<p class="navbar-brand">Talal Talhouk</a>
+						</div>
+						<button class="navbar-toggler hidden-sm-up pull-xs-right" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2">
+							&#9776;
+						</button>
+
+						<div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
+								<ul class="nav navbar-nav pull-xs-right">
+									<li class="nav-item"><a class="nav-link" href="about.html">About Me</a></li>
+									<li class="nav-item"><a class="nav-link" href="proj.html">Projects</a></li>
+									<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+								</ul>
+						</div>
+					</div>
 				</nav>
 			</header>
 			<div class="content">
 				<article class="main">
 					<h1>Welcome...</h1>
-					<p>We've concluded the remote portion of the program and onsite begins next week.  I'm real excited to begin 
-					diving deep and using the Ruby, Javascript, SQL to make some wonderful applications.  I'll be updating the progess 
-					on the site and adding projects as we go.  Also updating the blog periodically.  Please have a look around and 
+					<p>We've concluded the remote portion of the program and onsite begins next week.  I'm real excited to begin
+					diving deep and using the Ruby, Javascript, SQL to make some wonderful applications.  I'll be updating the progess
+					on the site and adding projects as we go.  Also updating the blog periodically.  Please have a look around and
 					send me any feedback on the contact page or below. Have a good <span id="day"> </span>!</p>
-					
+
 				</article>
 				<article class="dev">
 					<h2>DevBootcamp Status: Phase 0 / Week 9!</h2>
@@ -60,7 +78,10 @@
 				<a href="https://github.com/ttalhouk"><img src="imgs/github-circled.gif" width="50" height="50"></a>
 			</div>
 		</footer>
-	<script type="text/javascript" src="stylesheets/index.js"></script>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
+		<script type="text/javascript" src="stylesheets/index.js"></script>
 	</body>
 
 </html>
