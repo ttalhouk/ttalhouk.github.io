@@ -3,3 +3,35 @@
   padding: 0;*/
   box-sizing: border-box;
 }
+
+/* ---------- headline section -------------*/
+
+body {
+  color: #4f4f4f;
+  font-size: 18px;
+}
+
+
+#headline {
+  display:flex;
+  flex-wrap: wrap;
+}
+#headline-copy{
+  flex:2;
+  min-width: 490px;
+}
+#headline-copy .lead{
+  font-size: 130%;
+}
+#headline-img{
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#profile-pic {
+  height: 270px;
+  border-radius: 50%;
+  min-width: 200px;
+}

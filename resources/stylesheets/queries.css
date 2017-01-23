@@ -1,0 +1,20 @@
+/* tablets in landscape mode 768-1023 */
+@media only screen and (max-width: 1200px) {
+
+}
+/* tablets in landscape mode 768-1023 */
+@media only screen and (max-width: 1023px) {
+  h1.display-3{  font-size: 240%  }
+
+}
+/* small phones to small tablets 481-767px */
+@media only screen and (max-width: 767px) {
+  #headline-copy{order:2;}
+  #headline, #cta{text-align: center;}
+  #headline-img{order:1;}
+  #headline-copy .lead{font-size: 100%;}
+}
+/* small phones 0-480px*/
+@media only screen and (max-width: 480px) {
+  #headline-copy{min-width: 360px;}
+}
