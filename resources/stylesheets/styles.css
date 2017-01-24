@@ -127,3 +127,80 @@ body {
   width: 100%;
   align-self: flex-end;
 }
+
+/* ---------- contact ------------- */
+
+#content{
+  resize: none;
+  overflow: auto;
+  height: 200px;
+
+}
+
+/* ---------- footer ------------- */
+
+
+footer {
+  background-color: #333;
+  padding: 20px;
+  font-size: 90%;
+}
+
+.footer-nav {
+  float: left;
+}
+.social-links {
+  list-style: none;
+}
+.social-links li {
+  display: inline-block;
+  padding-right: 20px;
+  font-size: 100%;
+}
+
+
+
+.footer-nav a:link,
+.social-links li a:link,
+.footer-nav a:visited,
+.social-links li a:visited {
+  text-decoration: none;
+  border: 0;
+  color: #888;
+  transition: color .25s ease;
+}
+.social-links li a:link,
+.social-links li a:visited {
+  font-size: 140%
+}
+
+.ion-social-facebook:hover {
+  color: #3b5998;
+}
+.ion-social-github:hover {
+  color: #e95950;
+}
+.ion-social-linkedin:hover {
+  color: #007bb5;
+}
+
+
+.ion-social-facebook,
+.ion-social-linkedin,
+.ion-social-github {
+  transition: color .25s ease;
+}
+
+
+.footer-nav a:hover,
+.footer-nav a:active {
+  color: #ccc;
+}
+
+.footer-text, .copyright {
+  color: #909090;
+}
+
+.copyright {
+  padding-bottom: 15px;
+}
