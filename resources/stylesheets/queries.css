@@ -13,6 +13,10 @@
   #headline, #cta{text-align: center;}
   #headline-img{order:1;}
   #headline-copy .lead{font-size: 100%;}
+  .sub-heading{
+    font-size: 120%;
+    text-align: center;
+  }
 }
 /* small phones 0-480px*/
 @media only screen and (max-width: 480px) {
