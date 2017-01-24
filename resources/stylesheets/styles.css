@@ -4,14 +4,47 @@
   box-sizing: border-box;
 }
 
-/* ---------- headline section -------------*/
 
 body {
+  position:relative;
   color: #4f4f4f;
   font-size: 18px;
 }
+/* ---------- reusables ------------- */
 
+.divider {
+  width: 20%;
+  height: 4px;
+  margin: 15px auto;
+  background-color: rgb(230, 156, 30);
+}
+.section-header{
+  padding-top: 60px;
 
+}
+
+.section-header h2.display-4{
+  font-size: 250%;
+}
+.container{
+
+  min-height:100%;
+}
+
+/* ---------- navbar ------------- */
+#navbar{
+  min-height: 61px;
+  padding: 8px 16px;
+}
+/* ---------- headline section ------------- */
+.jumbotron {
+  position:relative;
+  margin-top: 61px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 0;
+  /*min-height: 100vh;*/
+}
 #headline {
   display:flex;
   flex-wrap: wrap;
@@ -34,4 +67,32 @@ body {
   height: 270px;
   border-radius: 50%;
   min-width: 200px;
+}
+
+/* ---------- about section ------------- */
+
+#about, #skills, #projects, #contact{
+  min-height:100vh;
+}
+
+.about-copy, .skills-copy{
+  line-height: 160%;
+  padding-bottom:25px;
+}
+
+/* ---------- about section ------------- */
+
+#skills{
+  background-color: #dedede;
+  display: flex;
+}
+.skills-copy{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  margin: auto;
+}
+.skills-item{
+  flex: 1;
+  margin-bottom: 20px;
 }
