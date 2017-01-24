@@ -96,3 +96,34 @@ body {
   flex: 1;
   margin-bottom: 20px;
 }
+/* ---------- Projects ------------- */
+.projects-window{
+  justify-content: center;
+}
+.project-card{
+  margin-bottom: 20px;
+  max-width: 300px;
+  flex: 1 0 30% !important;
+}
+.card-footer{
+  width: 100%;
+  margin-top: 10px;
+}
+.card-block{
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  justify-content: center;
+  height: 100%;
+}
+.card-text{
+  flex: 3;
+  align-self: flex-start;
+}
+.card-btn{
+  flex: 1;
+  flex-grow: 0;
+  height:45px;
+  width: 100%;
+  align-self: flex-end;
+}
