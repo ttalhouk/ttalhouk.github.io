@@ -277,6 +277,46 @@
       </section>
 
       <section id="contact">
+
+        <?php
+          $error = '';
+          $success = '';
+          if($_POST){
+            $email = $_POST['email'];
+            if(!$_POST['email']){
+              $error = $error.'No email provided. ';
+            };
+            if(!$_POST['name']){
+              $error = $error.'No name provided. ';
+            };
+            if(!$_POST['content']){
+              $error = $error.'No content provided.';
+            };
+
+            if ($_POST['email'] && filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+              $error .= "$email is not a valid email address";
+            }
+            if($error != ''){
+              $error = '<div class="alert alert-danger" role="alert"><p>'.$error.'</p></div>';
+            } else {
+              $emailTo = 'talal@sbcglobal.net';
+              $subject = 'Contact Form Submission';
+              $headers = "From: someone@talaltalhouk.com\n";
+              $headers.="MIME-Version: 1.0\n";
+              $headers.="Content-type: text/html; charset=iso 8859-1";
+              $body = "message: \r\n".$_POST['content']."\r\n";
+              $body .= "from: \r\n".$_POST['name']."\r\n";
+              $body .= "email: \r\n".$email;
+              if(mail($emailTo, $subject, $body, $headers)){
+                $success = '<div class="alert alert-success" role="alert"><p><strong>Thank You!</strong> Your message was sent successfully</p></div>';
+              } else {
+                $error = '<div class="alert alert-danger" role="alert"><p>Your message was unable to send</p></div>';
+              };
+            }
+          };
+
+
+          ?>
         <div class="row">
           <div class="col-md-8 offset-md-2 text-center section-header">
             <h2 class='display-4'>Drop Me a Line</h2>
@@ -285,23 +325,27 @@
           </div>
         </div>
         <div class="container contact-copy">
-          <form class="form-group" action="index.html" method="post">
-            <div class="form-group row">
+          <div class="err-msg">
+          </div>
+          <? echo $error ?>
+          <? echo $success ?>
+          <form class="form-group" method="post">
+            <div class="form-group row name-field">
               <label for="name" class="col-md-2 col-form-label col-form-label-lg">Name:</label>
               <div class="col-md-10">
-                <input type="text" class="form-control form-control-lg" id="name" placeholder="Your Name">
+                <input type="text" class="form-control form-control-lg" name='name' id="name" placeholder="Your Name">
               </div>
             </div>
-            <div class="form-group row">
+            <div class="form-group row email-field">
               <label for="email" class="col-sm-2 col-form-label col-form-label-lg">Email:</label>
               <div class="col-sm-10">
-                <input type="email" class="form-control form-control-lg" id="email" placeholder="you@example.com">
+                <input type="email" name='email' class="form-control form-control-lg" id="email" placeholder="you@example.com">
               </div>
             </div>
             <div class="form-group row content-field">
               <label for="content" class="col-md-12 col-form-label col-form-label-lg">Your Comment:</label>
               <div class="col-sm-12">
-                <textarea type="text" class="form-control form-control-lg" id="content" placeholer='Your comments...'>
+                <textarea type="text" class="form-control form-control-lg" name='content' id="content" placeholer='Your comments...'>
                 </textarea>
               </div>
             </div>

@@ -36,4 +36,36 @@ $(document).ready(function(){
       }
     });
   });
+  // form validation
+  $('form').on('submit', function(e){
+    e.preventDefault();
+    var errors = '';
+
+    if($('#email').val() === ''){
+      errors += "Email field not completed! ";
+      $('.email-field').addClass('has-danger');
+    } else {
+      $('.email-field').removeClass('has-danger');
+    }
+    if($('#name').val() === ''){
+      errors += "Name field not completed! ";
+      $('.name-field').addClass('has-danger');
+    } else {
+      $('.name-field').removeClass('has-danger');
+    }
+    if($('#content').val() === ''){
+      errors += "Comment field not completed! ";
+      $('.content-field').addClass('has-danger');
+    } else {
+      ('.content-field').removeClass('has-danger');
+    }
+    var errMsg = $('.err-msg');
+    if(errors != ''){
+      errMsg.html(`<div class="alert alert-danger err-msg sent-msg" role="alert"><strong>There was the following error(s) in your form:</strong><p>${errors}</p></div>`);
+      errMsg
+      errMsg.toggleClass('alert-danger hidden');
+    } else {
+      $('form').off('submit').submit();
+    }
+  });
 });
