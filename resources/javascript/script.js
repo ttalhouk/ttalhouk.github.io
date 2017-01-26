@@ -27,7 +27,6 @@ $(document).ready(function(){
         var target = $(this.hash);
         target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
         if (target.length) {
-          console.log($('html, body'));
           $('html, body').animate({
             scrollTop: (target.offset().top - offset)
           }, 1000);
@@ -38,6 +37,7 @@ $(document).ready(function(){
   });
   // form validation
   $('form').on('submit', function(e){
+    console.log(e);
     e.preventDefault();
     var errors = '';
 
@@ -57,7 +57,7 @@ $(document).ready(function(){
       errors += "Comment field not completed! ";
       $('.content-field').addClass('has-danger');
     } else {
-      ('.content-field').removeClass('has-danger');
+      $('.content-field').removeClass('has-danger');
     }
     var errMsg = $('.err-msg');
     if(errors != ''){
@@ -65,6 +65,7 @@ $(document).ready(function(){
       errMsg
       errMsg.toggleClass('alert-danger hidden');
     } else {
+      console.log('form submitted');
       $('form').off('submit').submit();
     }
   });

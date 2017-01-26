@@ -345,7 +345,7 @@
             <div class="form-group row content-field">
               <label for="content" class="col-md-12 col-form-label col-form-label-lg">Your Comment:</label>
               <div class="col-sm-12">
-                <textarea type="text" class="form-control form-control-lg" name='content' id="content" placeholer='Your comments...'>
+                <textarea type="text" class="form-control form-control-lg" name='content' id="content">
                 </textarea>
               </div>
             </div>
