@@ -7,9 +7,9 @@ Talal's Developer Portfolio Webpage
 * Wire Contact Form
 * Add Images
 * Link to Projects
+* Add background images
 
 ***Todo***
-* Add background images
 * Add scroll interaction
 
 
