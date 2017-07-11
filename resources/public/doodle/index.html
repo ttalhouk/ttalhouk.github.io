@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Noodle Doodle</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./stylesheets/style.css">
+  </head>
+  <body>
+    <div class="top-wrapper">
+      <div class="title-wrap">
+        <h1 class= "title vericaltext">Noodle</h1>
+      </div>
+      <canvas id="draw" width='800' height='500'></canvas>
+      <div class="title-wrap">
+        <h1 class= "title vericaltext">Doodle</h1>
+      </div>
+    </div>
+    <div class="controls">
+      <ul class='color-list'>
+        <li id='red'></li>
+        <li id='blue'></li>
+        <li id='yellow'></li>
+        <li id='green'></li>
+        <li id='orange'></li>
+        <li id='purple'></li>
+        <li id='black' class='active-color'></li>
+      </ul>
+      <button onClick="takePhoto()" class='btn' id='download'>Capture Doodle</button>
+      <button onClick="clearScreen()" class='btn' id='clear'>Clear Doodle</button>
+    </div>
+    <div class="strip"></div>
+
+    <audio class="snap" src="./assets/snap.mp3" hidden></audio>
+
+    <script type="text/javascript" src='./javascript/script.js'>
+    </script>
+  </body>
+</html>

@@ -153,6 +153,8 @@
               <li class="badge badge-pill badge-primary">Webpack</li>
               <li class="badge badge-pill badge-primary">Node</li>
               <li class="badge badge-pill badge-primary">Express</li>
+              <li class="badge badge-pill badge-primary">Meteor</li>
+              <li class="badge badge-pill badge-primary">Mocha</li>
               <li class="badge badge-pill badge-primary">Rspec</li>
               <li class="badge badge-pill badge-primary">Active-Record</li>
               <li class="badge badge-pill badge-primary">D3</li>
@@ -234,23 +236,22 @@
                 </div>
 
                 <div class="card project-card text-center">
-                  <img class="card-img-top" src="resources/images/nwr.png" alt="bftails photo">
+                  <img class="card-img-top" src="resources/images/note-taker.png" alt="note taker photo">
                   <!-- 256 x 180 -->
                   <div class="card-block">
                     <div class="card-text">
-
-                      <h4 class="card-title">NWR-Mafia-Database</h4>
-                      <p class="card-text">A database to organize results of a discussion board game of Mafia</p>
+                      <h4 class="card-title">Note-Taker</h4>
+                      <p class="card-text">An app for managing notes</p>
                     </div>
-                    <a href="http://nwr-mafia.herokuapp.com/" class="btn btn-primary card-btn">Go to Site</a>
+                    <a href="https://note-taker-ttalhouk.herokuapp.com/" class="btn btn-primary card-btn">Go to Site</a>
                   </div>
                   <div class="card-footer">
-                    <p class="card-text"><small class="text-muted">React, Rails, Axios, JavaScript</small></p>
+                    <p class="card-text"><small class="text-muted">React, Meteor, SCSS, MongoDB</small></p>
                   </div>
                 </div>
 
                 <div class="card project-card text-center">
-                  <img class="card-img-top" src="resources/images/exoplanet.png" alt="Card image cap">
+                  <img class="card-img-top" src="resources/images/exoplanet.png" alt="Exoplanets Image">
                   <!-- 256 x 180 -->
                   <div class="card-block">
                     <div class="card-text">
@@ -262,6 +263,22 @@
                   </div>
                   <div class="card-footer">
                     <p class="card-text"><small class="text-muted">Rails, PapaParse, HighCharts, JavaScript, Materialize</small></p>
+                  </div>
+                </div>
+
+                <div class="card project-card text-center">
+                  <img class="card-img-top" src="resources/images/noodle.png" alt="Noodle Doodle Image">
+                  <!-- 256 x 180 -->
+                  <div class="card-block">
+                    <div class="card-text">
+
+                      <h4 class="card-title">Noodle Doodle</h4>
+                      <p class="card-text">A application to make simple doodles that users can download using canvas and javascript</p>
+                    </div>
+                    <a href="resources/public/doodle" class="btn btn-primary card-btn">Go to App</a>
+                  </div>
+                  <div class="card-footer">
+                    <p class="card-text"><small class="text-muted">Javascript, HTML, Canvas</small></p>
                   </div>
                 </div>
 

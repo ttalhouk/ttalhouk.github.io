@@ -1,0 +1,138 @@
+.top-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.canvas{
+  flex:1;
+  background-color: white;
+}
+.controls{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.title-wrap {
+  flex:1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.title{
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin:0;
+  display: block;
+  text-transform: uppercase;
+  font-size: 50px;
+  font-weight: bold;
+  font-family: monospace;
+}
+
+.vericaltext{
+  min-width: 30px;
+  max-width: 30px;
+  word-wrap: break-word;
+  white-space: pre;
+  white-space:pre-wrap;
+}
+
+canvas{
+  display: block;
+  margin-bottom: 20px;
+  box-shadow: 0 1px #FFFFFF inset, 0 1px 3px rgba(34, 25, 25, 0.4);
+}
+
+ul {
+  flex: 1
+  display: inline-block;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+li {
+  margin-right: 10px;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: 0 1px #FFFFFF inset, 0 1px 3px rgba(34, 25, 25, 0.4);
+  transition: transform .5s ease-in-out;
+}
+li:hover {
+  cursor: pointer;
+
+}
+
+li.active-color{
+  transform: scale(1.2);
+}
+
+.btn {
+  flex: 1;
+  max-width: 150px;
+  text-align: center;
+  padding: 10px 20px;
+  color:#dedede;
+  border-radius: 10px;
+  border: 1px solid #219c9f;
+  text-decoration: none;
+  background-color: #219c9f;
+  box-shadow: 0 1px #FFFFFF inset, 0 1px 3px rgba(34, 25, 25, 0.4);
+}
+.btn:hover {
+  background-color: #2bbec2;
+}
+
+#red{
+  background-color: #C0392B;
+}
+#blue{
+  background-color: #2874A6;
+}
+#yellow{
+  background-color: #F4D03F;
+}
+#green{
+  background-color: #27AE60;
+}
+#orange{
+  background-color: #D35400;
+}
+#purple{
+  background-color: #7D3C98;
+}
+#black{
+  background-color: #17202A;
+}
+
+.strip {
+  padding:2rem;
+  overflow-y: scroll;
+}
+.strip img {
+  width:80px;
+  overflow-x: scroll;
+  padding:0.2rem 0.2rem 1.8rem 0.2rem;
+  box-shadow:0 0 3px rgba(0,0,0,0.2);
+  background:white;
+}
+.strip a {
+  position: relative;
+}
+.strip a:after{
+  content:'Download';
+  color: #2874A6;
+  position: absolute;
+  text-align: center;
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+  left:0;
+  top: -30%;
+  text-decoration: none;
+}
