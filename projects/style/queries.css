@@ -9,13 +9,10 @@
 }
 /* small phones to small tablets 481-767px */
 @media only screen and (max-width: 767px) {
-  .headline--intro {
-    flex-direction: column-reverse;
-  }
-
-  .headline, #cta{text-align: center;}
-
-  .headline--copy .lead{font-size: 100%;}
+  #headline-copy{-webkit-box-ordinal-group:3;-ms-flex-order:2;order:2;}
+  #headline, #cta{text-align: center;}
+  #headline-img{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1;}
+  #headline-copy .lead{font-size: 100%;}
   .sub-heading{
     font-size: 120%;
     text-align: center;
@@ -33,20 +30,9 @@
 }
 /* small phones 0-480px*/
 @media only screen and (max-width: 480px) {
-  #headline {
-    padding: 0 20px;
-  }
-
+  #headline-copy{min-width: 360px;}
   .skill-img {
     width: 50%;
     height: auto;
   }
-  .headline {
-    padding: 2rem 0;
-  }
-  .modal--image {
-    width:200px;
-    height: 133px;
-  }
-
 }

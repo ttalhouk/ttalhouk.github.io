@@ -21,47 +21,49 @@
   </head>
   <body data-spy="scroll" data-target="#navbar" data-offset='80'>
       <!-- nav bar -->
+      <div class="container">        
         <nav class="navbar fixed-top navbar-inverse bg-inverse navbar-toggleable-md bg-faded" id='navbar'>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"  aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand brand-out" href="#top">Talal Talhouk</a>
+          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"  aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <a class="navbar-brand brand-out" href="#top">Talal Talhouk</a>
 
-        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-          <ul class="nav navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="#about" data-target='#about'>About</a>
-            </li>
-            <li class="nav-item" >
-              <a class="nav-link" href="#skills" data-target='#skills'>Skills</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#projects" data-target='#projects'>Projects</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#contact" data-target='#contact'>Contact</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+          <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <ul class="nav navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="#about" data-target='#about'>About</a>
+              </li>
+              <li class="nav-item" >
+                <a class="nav-link" href="#skills" data-target='#skills'>Skills</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#projects" data-target='#projects'>Projects</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#contact" data-target='#contact'>Contact</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
 
         <!-- top section -->
-      <section class="headline" id='top'>
-        <div class="container">
-          <div class="headline--intro">
-            <div class="headline--copy">
+
+      <section class='jumbotron' id='top'>
+        <div class='container'>
+          <div id='headline'>
+            <div id='headline-copy'>
               <h1 class="display-3">Welcome to my Developer Portfolio</h1>
               <p class="lead">Please take a look around to find out more about me, my skills, and some projects I've worked on.</p>
             </div>
-            <div class="headline--picture" id='headline-img'>
+            <div id='headline-img'>
               <img src="resources/images/mypic.jpg" id='profile-pic' class='img-thumbnail' alt="Talal's Profile Picture">
             </div>
           </div>
-            <hr class="my-4">
-            <div id="cta">
-              <p>Do you have any projects I can help you with?</p>
-              <a href='#contact' class="btn btn-info"><i class='ion-ios-email'></i> Contact Me</a>
-            </div>
+          <hr class="my-4">
+          <div id="cta">
+            <p>Do you have any projects I can help you with?</p>
+            <a href='#contact' class="btn btn-info"><i class='ion-ios-email'></i> Contact Me</a>
           </div>
         </div>
       </section>
@@ -92,7 +94,7 @@
         </div>
       </section>
 
-      <section id="skills">
+      <section id="skills" >
         <div class='container'>
           <div class="row section-title">
             <div class="col-md-8 offset-md-2 text-center section-header">
@@ -200,60 +202,18 @@
       </section>
 
       <section id="contact">
-        <?php
-          $error = '';
-          $success = '';
-
-          if($_POST){
-            $email = $_POST['email'];
-            if(!$_POST['email']){
-              $error = $error.'No email provided. ';
-            };
-            if(!$_POST['name']){
-              $error = $error.'No name provided. ';
-            };
-            if(!$_POST['content']){
-              $error = $error.'No content provided.';
-            };
-
-            if ($_POST['email'] && filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
-              $error .= "$email is not a valid email address";
-            };
-            if($error != ''){
-
-              $error = '<div class="alert alert-danger" role="alert"><p>'.$error.'</p></div>';
-            } else {
-
-              $emailTo = 'talal@sbcglobal.net';
-              $subject = 'Contact Form Submission';
-              $headers = "From: someone@talaltalhouk.com\n";
-              $headers.="MIME-Version: 1.0\n";
-              $headers.="Content-type: text/html; charset=iso 8859-1";
-              $body = "message: \r\n".$_POST['content']."\r\n";
-              $body .= "from: \r\n".$_POST['name']."\r\n";
-              $body .= "email: \r\n".$email;
-              if(mail($emailTo, $subject, $body, $headers)){
-                $success = '<div class="alert alert-success" role="alert"><p><strong>Thank You!</strong> Your message was sent successfully</p></div>';
-              } else {
-                $error = '<div class="alert alert-danger" role="alert"><p>Your message was unable to send</p></div>';
-              };
-            };
-          };
-          ?>
-          <div class="container">
-            <div class="row">
-              <div class="col-md-8 offset-md-2 text-center section-header">
-                <h2 class='display-4'>Drop Me a Line</h2>
-                <div class="divider">
-                </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 offset-md-2 text-center section-header">
+              <h2 class='display-4'>Drop Me a Line</h2>
+              <div class="divider">
               </div>
             </div>
           </div>
+        </div>
           <div class="container contact-copy">
             <div class="err-msg">
             </div>
-            <? echo $error ?>
-            <? echo $success ?>
             <form class="form-group contact-form" method="post">
               <div class="form-group row name-field">
                 <label for="name" class="col-md-2 col-form-label col-form-label-lg">Name:</label>

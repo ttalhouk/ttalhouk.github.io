@@ -66,7 +66,7 @@ $(document).ready(function(){
   }
 
   new Waypoint.Inview({
-    element:$('.jumbotron'),
+    element:$('#top'),
     entered: function(direction){
       if(direction === 'up'){
         navTransitionDark();
