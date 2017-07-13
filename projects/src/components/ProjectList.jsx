@@ -6,14 +6,16 @@ class ProjectList extends React.Component {
 
   renderProjects() {
     return projects.map((project, idx) => {
-      return (<Project key={idx} project={project} />)
+      return (
+          <Project key={idx} project={project} />
+      )
     });
   }
 
   render () {
     console.log(projects);
     return (
-      <div>
+      <div className='project-list--wrapper'>
         {this.renderProjects()}
       </div>
     )
