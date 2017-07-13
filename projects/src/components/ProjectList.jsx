@@ -13,7 +13,6 @@ class ProjectList extends React.Component {
   }
 
   render () {
-    console.log(projects);
     return (
       <div className='project-list--wrapper'>
         {this.renderProjects()}

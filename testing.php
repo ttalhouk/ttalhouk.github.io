@@ -21,7 +21,7 @@
   </head>
   <body data-spy="scroll" data-target="#navbar" data-offset='80'>
       <!-- nav bar -->
-        <nav class="navbar fixed-top navbar-inverse bg-inverse navbar-toggleable-md bg-faded" id='navbar'>
+      <nav class="navbar fixed-top navbar-inverse bg-inverse navbar-toggleable-md bg-faded" id='navbar'>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"  aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -46,6 +46,7 @@
       </nav>
 
         <!-- top section -->
+
       <section class="headline" id='top'>
         <div class="container">
           <div class="headline--intro">

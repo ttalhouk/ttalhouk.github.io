@@ -19869,7 +19869,6 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      console.log(_data.projects);
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'project-list--wrapper' },
@@ -19993,21 +19992,25 @@
 	            _react2.default.createElement('div', { className: 'modal--image', style: { backgroundImage: 'url(\'' + image + '\')' } }),
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'modal--content' },
+	              { className: 'fader' },
 	              _react2.default.createElement(
-	                'h3',
-	                null,
-	                title
-	              ),
-	              _react2.default.createElement(
-	                'p',
-	                null,
-	                description
-	              ),
-	              _react2.default.createElement(
-	                'small',
-	                null,
-	                keywords.join(', ')
+	                'div',
+	                { className: 'modal--content' },
+	                _react2.default.createElement(
+	                  'h3',
+	                  null,
+	                  title
+	                ),
+	                _react2.default.createElement(
+	                  'p',
+	                  null,
+	                  description
+	                ),
+	                _react2.default.createElement(
+	                  'small',
+	                  null,
+	                  keywords.join(', ')
+	                )
 	              )
 	            )
 	          ),
