@@ -19840,7 +19840,7 @@
 
 	var _Project2 = _interopRequireDefault(_Project);
 
-	var _data = __webpack_require__(182);
+	var _data = __webpack_require__(184);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -20042,7 +20042,7 @@
 /* 163 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -20055,12 +20055,13 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.default = _Modal2.default;
+	module.exports = exports["default"];
 
 /***/ }),
 /* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -20083,15 +20084,15 @@
 
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 
-	var _ModalPortal = __webpack_require__(173);
+	var _ModalPortal = __webpack_require__(174);
 
 	var _ModalPortal2 = _interopRequireDefault(_ModalPortal);
 
-	var _ariaAppHider = __webpack_require__(177);
+	var _ariaAppHider = __webpack_require__(178);
 
 	var ariaAppHider = _interopRequireWildcard(_ariaAppHider);
 
-	var _safeHTMLElement = __webpack_require__(180);
+	var _safeHTMLElement = __webpack_require__(182);
 
 	var _safeHTMLElement2 = _interopRequireDefault(_safeHTMLElement);
 
@@ -20105,10 +20106,11 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var portalClassName = exports.portalClassName = 'ReactModalPortal';
-	var bodyOpenClassName = exports.bodyOpenClassName = 'ReactModal__Body--open';
+	var portalClassName = exports.portalClassName = "ReactModalPortal";
+	var bodyOpenClassName = exports.bodyOpenClassName = "ReactModal__Body--open";
 
-	var renderSubtreeIntoContainer = _reactDom2.default.unstable_renderSubtreeIntoContainer;
+	var isReact16 = _reactDom2.default.createPortal !== undefined;
+	var createPortal = isReact16 ? _reactDom2.default.createPortal : _reactDom2.default.unstable_renderSubtreeIntoContainer;
 
 	function getParentElement(parentSelector) {
 	  return parentSelector();
@@ -20129,28 +20131,36 @@
 	    }
 
 	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Modal.__proto__ || Object.getPrototypeOf(Modal)).call.apply(_ref, [this].concat(args))), _this), _this.removePortal = function () {
-	      _reactDom2.default.unmountComponentAtNode(_this.node);
+	      !isReact16 && _reactDom2.default.unmountComponentAtNode(_this.node);
 	      var parent = getParentElement(_this.props.parentSelector);
 	      parent.removeChild(_this.node);
+	    }, _this.portalRef = function (ref) {
+	      _this.portal = ref;
 	    }, _this.renderPortal = function (props) {
-	      _this.portal = renderSubtreeIntoContainer(_this, _react2.default.createElement(_ModalPortal2.default, _extends({ defaultStyles: Modal.defaultStyles }, props)), _this.node);
+	      var portal = createPortal(_this, _react2.default.createElement(_ModalPortal2.default, _extends({ defaultStyles: Modal.defaultStyles }, props)), _this.node);
+	      _this.portalRef(portal);
 	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
 
 	  _createClass(Modal, [{
-	    key: 'componentDidMount',
+	    key: "componentDidMount",
 	    value: function componentDidMount() {
-	      this.node = document.createElement('div');
+	      if (!_safeHTMLElement.canUseDOM) return;
+
+	      if (!isReact16) {
+	        this.node = document.createElement("div");
+	      }
 	      this.node.className = this.props.portalClassName;
 
 	      var parent = getParentElement(this.props.parentSelector);
 	      parent.appendChild(this.node);
 
-	      this.renderPortal(this.props);
+	      !isReact16 && this.renderPortal(this.props);
 	    }
 	  }, {
-	    key: 'componentWillReceiveProps',
+	    key: "componentWillReceiveProps",
 	    value: function componentWillReceiveProps(newProps) {
+	      if (!_safeHTMLElement.canUseDOM) return;
 	      var isOpen = newProps.isOpen;
 	      // Stop unnecessary renders if modal is remaining closed
 
@@ -20164,19 +20174,20 @@
 	        newParent.appendChild(this.node);
 	      }
 
-	      this.renderPortal(newProps);
+	      !isReact16 && this.renderPortal(newProps);
 	    }
 	  }, {
-	    key: 'componentWillUpdate',
+	    key: "componentWillUpdate",
 	    value: function componentWillUpdate(newProps) {
+	      if (!_safeHTMLElement.canUseDOM) return;
 	      if (newProps.portalClassName !== this.props.portalClassName) {
 	        this.node.className = newProps.portalClassName;
 	      }
 	    }
 	  }, {
-	    key: 'componentWillUnmount',
+	    key: "componentWillUnmount",
 	    value: function componentWillUnmount() {
-	      if (!this.node) return;
+	      if (!_safeHTMLElement.canUseDOM || !this.node || !this.portal) return;
 
 	      var state = this.portal.state;
 	      var now = Date.now();
@@ -20193,24 +20204,26 @@
 	      }
 	    }
 	  }, {
-	    key: 'render',
+	    key: "render",
 	    value: function render() {
-	      return null;
+	      if (!_safeHTMLElement.canUseDOM || !isReact16) {
+	        return null;
+	      }
+
+	      if (!this.node && isReact16) {
+	        this.node = document.createElement("div");
+	      }
+
+	      return createPortal(_react2.default.createElement(_ModalPortal2.default, _extends({
+	        ref: this.portalRef,
+	        defaultStyles: Modal.defaultStyles
+	      }, this.props)), this.node);
 	    }
 	  }], [{
-	    key: 'setAppElement',
+	    key: "setAppElement",
 	    value: function setAppElement(element) {
 	      ariaAppHider.setElement(element);
 	    }
-
-	    /* eslint-disable no-console */
-
-	  }, {
-	    key: 'injectCSS',
-	    value: function injectCSS() {
-	      process.env.NODE_ENV !== "production" && console.warn('React-Modal: injectCSS has been deprecated ' + 'and no longer has any effect. It will be removed in a later version');
-	    }
-	    /* eslint-enable no-console */
 
 	    /* eslint-disable react/no-unused-prop-types */
 
@@ -20229,18 +20242,29 @@
 	  }),
 	  portalClassName: _propTypes2.default.string,
 	  bodyOpenClassName: _propTypes2.default.string,
-	  className: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.object]),
-	  overlayClassName: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.object]),
+	  className: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.shape({
+	    base: _propTypes2.default.string.isRequired,
+	    afterOpen: _propTypes2.default.string.isRequired,
+	    beforeClose: _propTypes2.default.string.isRequired
+	  })]),
+	  overlayClassName: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.shape({
+	    base: _propTypes2.default.string.isRequired,
+	    afterOpen: _propTypes2.default.string.isRequired,
+	    beforeClose: _propTypes2.default.string.isRequired
+	  })]),
 	  appElement: _propTypes2.default.instanceOf(_safeHTMLElement2.default),
 	  onAfterOpen: _propTypes2.default.func,
 	  onRequestClose: _propTypes2.default.func,
 	  closeTimeoutMS: _propTypes2.default.number,
 	  ariaHideApp: _propTypes2.default.bool,
+	  shouldFocusAfterRender: _propTypes2.default.bool,
 	  shouldCloseOnOverlayClick: _propTypes2.default.bool,
+	  shouldReturnFocusAfterClose: _propTypes2.default.bool,
 	  parentSelector: _propTypes2.default.func,
 	  aria: _propTypes2.default.object,
 	  role: _propTypes2.default.string,
-	  contentLabel: _propTypes2.default.string.isRequired
+	  contentLabel: _propTypes2.default.string,
+	  shouldCloseOnEsc: _propTypes2.default.bool
 	};
 	Modal.defaultProps = {
 	  isOpen: false,
@@ -20248,49 +20272,49 @@
 	  bodyOpenClassName: bodyOpenClassName,
 	  ariaHideApp: true,
 	  closeTimeoutMS: 0,
+	  shouldFocusAfterRender: true,
+	  shouldCloseOnEsc: true,
 	  shouldCloseOnOverlayClick: true,
+	  shouldReturnFocusAfterClose: true,
 	  parentSelector: function parentSelector() {
 	    return document.body;
 	  }
 	};
 	Modal.defaultStyles = {
 	  overlay: {
-	    position: 'fixed',
+	    position: "fixed",
 	    top: 0,
 	    left: 0,
 	    right: 0,
 	    bottom: 0,
-	    backgroundColor: 'rgba(255, 255, 255, 0.75)'
+	    backgroundColor: "rgba(255, 255, 255, 0.75)"
 	  },
 	  content: {
-	    position: 'absolute',
-	    top: '40px',
-	    left: '40px',
-	    right: '40px',
-	    bottom: '40px',
-	    border: '1px solid #ccc',
-	    background: '#fff',
-	    overflow: 'auto',
-	    WebkitOverflowScrolling: 'touch',
-	    borderRadius: '4px',
-	    outline: 'none',
-	    padding: '20px'
+	    position: "absolute",
+	    top: "40px",
+	    left: "40px",
+	    right: "40px",
+	    bottom: "40px",
+	    border: "1px solid #ccc",
+	    background: "#fff",
+	    overflow: "auto",
+	    WebkitOverflowScrolling: "touch",
+	    borderRadius: "4px",
+	    outline: "none",
+	    padding: "20px"
 	  }
 	};
 	exports.default = Modal;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ }),
 /* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
-	 * Copyright 2013-present, Facebook, Inc.
-	 * All rights reserved.
+	 * Copyright (c) 2013-present, Facebook, Inc.
 	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
 	 */
 
 	if (process.env.NODE_ENV !== 'production') {
@@ -20312,7 +20336,7 @@
 	} else {
 	  // By explicitly using `prop-types` you are opting into new production behavior.
 	  // http://fb.me/prop-types-in-prod
-	  module.exports = __webpack_require__(172)();
+	  module.exports = __webpack_require__(173)();
 	}
 
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
@@ -20322,12 +20346,10 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
-	 * Copyright 2013-present, Facebook, Inc.
-	 * All rights reserved.
+	 * Copyright (c) 2013-present, Facebook, Inc.
 	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
 	 */
 
 	'use strict';
@@ -20335,9 +20357,10 @@
 	var emptyFunction = __webpack_require__(167);
 	var invariant = __webpack_require__(168);
 	var warning = __webpack_require__(169);
+	var assign = __webpack_require__(170);
 
-	var ReactPropTypesSecret = __webpack_require__(170);
-	var checkPropTypes = __webpack_require__(171);
+	var ReactPropTypesSecret = __webpack_require__(171);
+	var checkPropTypes = __webpack_require__(172);
 
 	module.exports = function(isValidElement, throwOnDirectAccess) {
 	  /* global Symbol */
@@ -20433,7 +20456,8 @@
 	    objectOf: createObjectOfTypeChecker,
 	    oneOf: createEnumTypeChecker,
 	    oneOfType: createUnionTypeChecker,
-	    shape: createShapeTypeChecker
+	    shape: createShapeTypeChecker,
+	    exact: createStrictShapeTypeChecker,
 	  };
 
 	  /**
@@ -20648,7 +20672,7 @@
 	      if (typeof checker !== 'function') {
 	        warning(
 	          false,
-	          'Invalid argument supplid to oneOfType. Expected an array of check functions, but ' +
+	          'Invalid argument supplied to oneOfType. Expected an array of check functions, but ' +
 	          'received %s at index %s.',
 	          getPostfixForTypeWarning(checker),
 	          i
@@ -20699,6 +20723,36 @@
 	      }
 	      return null;
 	    }
+	    return createChainableTypeChecker(validate);
+	  }
+
+	  function createStrictShapeTypeChecker(shapeTypes) {
+	    function validate(props, propName, componentName, location, propFullName) {
+	      var propValue = props[propName];
+	      var propType = getPropType(propValue);
+	      if (propType !== 'object') {
+	        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
+	      }
+	      // We need to check all keys in case some are required but missing from
+	      // props.
+	      var allKeys = assign({}, props[propName], shapeTypes);
+	      for (var key in allKeys) {
+	        var checker = shapeTypes[key];
+	        if (!checker) {
+	          return new PropTypeError(
+	            'Invalid ' + location + ' `' + propFullName + '` key `' + key + '` supplied to `' + componentName + '`.' +
+	            '\nBad object: ' + JSON.stringify(props[propName], null, '  ') +
+	            '\nValid keys: ' +  JSON.stringify(Object.keys(shapeTypes), null, '  ')
+	          );
+	        }
+	        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+	        if (error) {
+	          return error;
+	        }
+	      }
+	      return null;
+	    }
+
 	    return createChainableTypeChecker(validate);
 	  }
 
@@ -20844,11 +20898,9 @@
 
 	/**
 	 * Copyright (c) 2013-present, Facebook, Inc.
-	 * All rights reserved.
 	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
 	 *
 	 * 
 	 */
@@ -20885,11 +20937,9 @@
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright (c) 2013-present, Facebook, Inc.
-	 * All rights reserved.
 	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
 	 *
 	 */
 
@@ -20945,12 +20995,10 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
-	 * Copyright 2014-2015, Facebook, Inc.
-	 * All rights reserved.
+	 * Copyright (c) 2014-present, Facebook, Inc.
 	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
 	 *
 	 */
 
@@ -20968,45 +21016,43 @@
 	var warning = emptyFunction;
 
 	if (process.env.NODE_ENV !== 'production') {
-	  (function () {
-	    var printWarning = function printWarning(format) {
-	      for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-	        args[_key - 1] = arguments[_key];
+	  var printWarning = function printWarning(format) {
+	    for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+	      args[_key - 1] = arguments[_key];
+	    }
+
+	    var argIndex = 0;
+	    var message = 'Warning: ' + format.replace(/%s/g, function () {
+	      return args[argIndex++];
+	    });
+	    if (typeof console !== 'undefined') {
+	      console.error(message);
+	    }
+	    try {
+	      // --- Welcome to debugging React ---
+	      // This error was thrown as a convenience so that you can use this stack
+	      // to find the callsite that caused this warning to fire.
+	      throw new Error(message);
+	    } catch (x) {}
+	  };
+
+	  warning = function warning(condition, format) {
+	    if (format === undefined) {
+	      throw new Error('`warning(condition, format, ...args)` requires a warning ' + 'message argument');
+	    }
+
+	    if (format.indexOf('Failed Composite propType: ') === 0) {
+	      return; // Ignore CompositeComponent proptype check.
+	    }
+
+	    if (!condition) {
+	      for (var _len2 = arguments.length, args = Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
+	        args[_key2 - 2] = arguments[_key2];
 	      }
 
-	      var argIndex = 0;
-	      var message = 'Warning: ' + format.replace(/%s/g, function () {
-	        return args[argIndex++];
-	      });
-	      if (typeof console !== 'undefined') {
-	        console.error(message);
-	      }
-	      try {
-	        // --- Welcome to debugging React ---
-	        // This error was thrown as a convenience so that you can use this stack
-	        // to find the callsite that caused this warning to fire.
-	        throw new Error(message);
-	      } catch (x) {}
-	    };
-
-	    warning = function warning(condition, format) {
-	      if (format === undefined) {
-	        throw new Error('`warning(condition, format, ...args)` requires a warning ' + 'message argument');
-	      }
-
-	      if (format.indexOf('Failed Composite propType: ') === 0) {
-	        return; // Ignore CompositeComponent proptype check.
-	      }
-
-	      if (!condition) {
-	        for (var _len2 = arguments.length, args = Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
-	          args[_key2 - 2] = arguments[_key2];
-	        }
-
-	        printWarning.apply(undefined, [format].concat(args));
-	      }
-	    };
-	  })();
+	      printWarning.apply(undefined, [format].concat(args));
+	    }
+	  };
 	}
 
 	module.exports = warning;
@@ -21016,13 +21062,107 @@
 /* 170 */
 /***/ (function(module, exports) {
 
+	/*
+	object-assign
+	(c) Sindre Sorhus
+	@license MIT
+	*/
+
+	'use strict';
+	/* eslint-disable no-unused-vars */
+	var getOwnPropertySymbols = Object.getOwnPropertySymbols;
+	var hasOwnProperty = Object.prototype.hasOwnProperty;
+	var propIsEnumerable = Object.prototype.propertyIsEnumerable;
+
+	function toObject(val) {
+		if (val === null || val === undefined) {
+			throw new TypeError('Object.assign cannot be called with null or undefined');
+		}
+
+		return Object(val);
+	}
+
+	function shouldUseNative() {
+		try {
+			if (!Object.assign) {
+				return false;
+			}
+
+			// Detect buggy property enumeration order in older V8 versions.
+
+			// https://bugs.chromium.org/p/v8/issues/detail?id=4118
+			var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
+			test1[5] = 'de';
+			if (Object.getOwnPropertyNames(test1)[0] === '5') {
+				return false;
+			}
+
+			// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+			var test2 = {};
+			for (var i = 0; i < 10; i++) {
+				test2['_' + String.fromCharCode(i)] = i;
+			}
+			var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
+				return test2[n];
+			});
+			if (order2.join('') !== '0123456789') {
+				return false;
+			}
+
+			// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+			var test3 = {};
+			'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
+				test3[letter] = letter;
+			});
+			if (Object.keys(Object.assign({}, test3)).join('') !==
+					'abcdefghijklmnopqrst') {
+				return false;
+			}
+
+			return true;
+		} catch (err) {
+			// We don't expect any of the above to throw, but better to be safe.
+			return false;
+		}
+	}
+
+	module.exports = shouldUseNative() ? Object.assign : function (target, source) {
+		var from;
+		var to = toObject(target);
+		var symbols;
+
+		for (var s = 1; s < arguments.length; s++) {
+			from = Object(arguments[s]);
+
+			for (var key in from) {
+				if (hasOwnProperty.call(from, key)) {
+					to[key] = from[key];
+				}
+			}
+
+			if (getOwnPropertySymbols) {
+				symbols = getOwnPropertySymbols(from);
+				for (var i = 0; i < symbols.length; i++) {
+					if (propIsEnumerable.call(from, symbols[i])) {
+						to[symbols[i]] = from[symbols[i]];
+					}
+				}
+			}
+		}
+
+		return to;
+	};
+
+
+/***/ }),
+/* 171 */
+/***/ (function(module, exports) {
+
 	/**
-	 * Copyright 2013-present, Facebook, Inc.
-	 * All rights reserved.
+	 * Copyright (c) 2013-present, Facebook, Inc.
 	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
 	 */
 
 	'use strict';
@@ -21033,16 +21173,14 @@
 
 
 /***/ }),
-/* 171 */
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
-	 * Copyright 2013-present, Facebook, Inc.
-	 * All rights reserved.
+	 * Copyright (c) 2013-present, Facebook, Inc.
 	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
 	 */
 
 	'use strict';
@@ -21050,7 +21188,7 @@
 	if (process.env.NODE_ENV !== 'production') {
 	  var invariant = __webpack_require__(168);
 	  var warning = __webpack_require__(169);
-	  var ReactPropTypesSecret = __webpack_require__(170);
+	  var ReactPropTypesSecret = __webpack_require__(171);
 	  var loggedTypeFailures = {};
 	}
 
@@ -21076,7 +21214,7 @@
 	        try {
 	          // This is intentionally an invariant that gets caught. It's the same
 	          // behavior as without this statement except with a better message.
-	          invariant(typeof typeSpecs[typeSpecName] === 'function', '%s: %s type `%s` is invalid; it must be a function, usually from ' + 'React.PropTypes.', componentName || 'React class', location, typeSpecName);
+	          invariant(typeof typeSpecs[typeSpecName] === 'function', '%s: %s type `%s` is invalid; it must be a function, usually from ' + 'the `prop-types` package, but received `%s`.', componentName || 'React class', location, typeSpecName, typeof typeSpecs[typeSpecName]);
 	          error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret);
 	        } catch (ex) {
 	          error = ex;
@@ -21101,23 +21239,21 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ }),
-/* 172 */
+/* 173 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
-	 * Copyright 2013-present, Facebook, Inc.
-	 * All rights reserved.
+	 * Copyright (c) 2013-present, Facebook, Inc.
 	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
 	 */
 
 	'use strict';
 
 	var emptyFunction = __webpack_require__(167);
 	var invariant = __webpack_require__(168);
-	var ReactPropTypesSecret = __webpack_require__(170);
+	var ReactPropTypesSecret = __webpack_require__(171);
 
 	module.exports = function() {
 	  function shim(props, propName, componentName, location, propFullName, secret) {
@@ -21155,7 +21291,8 @@
 	    objectOf: getShim,
 	    oneOf: getShim,
 	    oneOfType: getShim,
-	    shape: getShim
+	    shape: getShim,
+	    exact: getShim
 	  };
 
 	  ReactPropTypes.checkPropTypes = emptyFunction;
@@ -21166,10 +21303,10 @@
 
 
 /***/ }),
-/* 173 */
+/* 174 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
+	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -21187,27 +21324,29 @@
 
 	var _propTypes = __webpack_require__(165);
 
-	var _focusManager = __webpack_require__(174);
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+
+	var _focusManager = __webpack_require__(175);
 
 	var focusManager = _interopRequireWildcard(_focusManager);
 
-	var _scopeTab = __webpack_require__(176);
+	var _scopeTab = __webpack_require__(177);
 
 	var _scopeTab2 = _interopRequireDefault(_scopeTab);
 
-	var _ariaAppHider = __webpack_require__(177);
+	var _ariaAppHider = __webpack_require__(178);
 
 	var ariaAppHider = _interopRequireWildcard(_ariaAppHider);
 
-	var _refCount = __webpack_require__(178);
+	var _refCount = __webpack_require__(180);
 
 	var refCount = _interopRequireWildcard(_refCount);
 
-	var _bodyClassList = __webpack_require__(179);
+	var _bodyClassList = __webpack_require__(181);
 
 	var bodyClassList = _interopRequireWildcard(_bodyClassList);
 
-	var _safeHTMLElement = __webpack_require__(180);
+	var _safeHTMLElement = __webpack_require__(182);
 
 	var _safeHTMLElement2 = _interopRequireDefault(_safeHTMLElement);
 
@@ -21223,8 +21362,8 @@
 
 	// so that our CSS is statically analyzable
 	var CLASS_NAMES = {
-	  overlay: 'ReactModal__Overlay',
-	  content: 'ReactModal__Content'
+	  overlay: "ReactModal__Overlay",
+	  content: "ReactModal__Content"
 	};
 
 	var TAB_KEY = 9;
@@ -21239,7 +21378,7 @@
 	    var _this = _possibleConstructorReturn(this, (ModalPortal.__proto__ || Object.getPrototypeOf(ModalPortal)).call(this, props));
 
 	    _this.setFocusAfterRender = function (focus) {
-	      _this.focusAfterRender = focus;
+	      _this.focusAfterRender = _this.props.shouldFocusAfterRender && focus;
 	    };
 
 	    _this.setOverlayRef = function (overlay) {
@@ -21251,8 +21390,27 @@
 	    };
 
 	    _this.afterClose = function () {
-	      focusManager.returnFocus();
-	      focusManager.teardownScopedFocus();
+	      var _this$props = _this.props,
+	          appElement = _this$props.appElement,
+	          ariaHideApp = _this$props.ariaHideApp;
+
+	      // Remove body class
+
+	      bodyClassList.remove(_this.props.bodyOpenClassName);
+
+	      // Reset aria-hidden attribute if all modals have been removed
+	      if (ariaHideApp && refCount.totalCount() < 1) {
+	        ariaAppHider.show(appElement);
+	      }
+
+	      if (_this.props.shouldFocusAfterRender) {
+	        if (_this.props.shouldReturnFocusAfterClose) {
+	          focusManager.returnFocus();
+	          focusManager.teardownScopedFocus();
+	        } else {
+	          focusManager.popWithoutFocus();
+	        }
+	      }
 	    };
 
 	    _this.open = function () {
@@ -21261,8 +21419,11 @@
 	        clearTimeout(_this.closeTimer);
 	        _this.setState({ beforeClose: false });
 	      } else {
-	        focusManager.setupScopedFocus(_this.node);
-	        focusManager.markForFocusLater();
+	        if (_this.props.shouldFocusAfterRender) {
+	          focusManager.setupScopedFocus(_this.node);
+	          focusManager.markForFocusLater();
+	        }
+
 	        _this.setState({ isOpen: true }, function () {
 	          _this.setState({ afterOpen: true });
 
@@ -21274,7 +21435,6 @@
 	    };
 
 	    _this.close = function () {
-	      _this.beforeClose();
 	      if (_this.props.closeTimeoutMS > 0) {
 	        _this.closeWithTimeout();
 	      } else {
@@ -21306,8 +21466,9 @@
 	      if (event.keyCode === TAB_KEY) {
 	        (0, _scopeTab2.default)(_this.content, event);
 	      }
-	      if (event.keyCode === ESC_KEY) {
-	        event.preventDefault();
+
+	      if (_this.props.shouldCloseOnEsc && event.keyCode === ESC_KEY) {
+	        event.stopPropagation();
 	        _this.requestClose(event);
 	      }
 	    };
@@ -21325,10 +21486,36 @@
 	        }
 	      }
 	      _this.shouldClose = null;
+	      _this.moveFromContentToOverlay = null;
+	    };
+
+	    _this.handleOverlayOnMouseUp = function () {
+	      if (_this.moveFromContentToOverlay === null) {
+	        _this.shouldClose = false;
+	      }
+	      if (_this.props.shouldCloseOnOverlayClick) {
+	        _this.shouldClose = true;
+	      }
+	    };
+
+	    _this.handleContentOnMouseUp = function () {
+	      _this.shouldClose = false;
+	    };
+
+	    _this.handleOverlayOnMouseDown = function (event) {
+	      if (!_this.props.shouldCloseOnOverlayClick && event.target == _this.overlay) {
+	        event.preventDefault();
+	      }
+	      _this.moveFromContentToOverlay = false;
 	    };
 
 	    _this.handleContentOnClick = function () {
 	      _this.shouldClose = false;
+	    };
+
+	    _this.handleContentOnMouseDown = function () {
+	      _this.shouldClose = false;
+	      _this.moveFromContentToOverlay = false;
 	    };
 
 	    _this.requestClose = function (event) {
@@ -21348,24 +21535,24 @@
 	    };
 
 	    _this.buildClassName = function (which, additional) {
-	      var classNames = (typeof additional === 'undefined' ? 'undefined' : _typeof(additional)) === 'object' ? additional : {
+	      var classNames = (typeof additional === "undefined" ? "undefined" : _typeof(additional)) === "object" ? additional : {
 	        base: CLASS_NAMES[which],
-	        afterOpen: CLASS_NAMES[which] + '--after-open',
-	        beforeClose: CLASS_NAMES[which] + '--before-close'
+	        afterOpen: CLASS_NAMES[which] + "--after-open",
+	        beforeClose: CLASS_NAMES[which] + "--before-close"
 	      };
 	      var className = classNames.base;
 	      if (_this.state.afterOpen) {
-	        className = className + ' ' + classNames.afterOpen;
+	        className = className + " " + classNames.afterOpen;
 	      }
 	      if (_this.state.beforeClose) {
-	        className = className + ' ' + classNames.beforeClose;
+	        className = className + " " + classNames.beforeClose;
 	      }
-	      return typeof additional === 'string' && additional ? className + ' ' + additional : className;
+	      return typeof additional === "string" && additional ? className + " " + additional : className;
 	    };
 
 	    _this.ariaAttributes = function (items) {
 	      return Object.keys(items).reduce(function (acc, name) {
-	        acc['aria-' + name] = items[name];
+	        acc["aria-" + name] = items[name];
 	        return acc;
 	      }, {});
 	    };
@@ -21376,11 +21563,12 @@
 	    };
 
 	    _this.shouldClose = null;
+	    _this.moveFromContentToOverlay = null;
 	    return _this;
 	  }
 
 	  _createClass(ModalPortal, [{
-	    key: 'componentDidMount',
+	    key: "componentDidMount",
 	    value: function componentDidMount() {
 	      // Focus needs to be set when mounting and already open
 	      if (this.props.isOpen) {
@@ -21389,12 +21577,12 @@
 	      }
 	    }
 	  }, {
-	    key: 'componentWillReceiveProps',
+	    key: "componentWillReceiveProps",
 	    value: function componentWillReceiveProps(newProps) {
 	      if (process.env.NODE_ENV !== "production") {
 	        if (newProps.bodyOpenClassName !== this.props.bodyOpenClassName) {
 	          // eslint-disable-next-line no-console
-	          console.warn('React-Modal: "bodyOpenClassName" prop has been modified. ' + 'This may cause unexpected behavior when multiple modals are open.');
+	          console.warn('React-Modal: "bodyOpenClassName" prop has been modified. ' + "This may cause unexpected behavior when multiple modals are open.");
 	        }
 	      }
 	      // Focus only needs to be set once when the modal is being opened
@@ -21406,7 +21594,7 @@
 	      }
 	    }
 	  }, {
-	    key: 'componentDidUpdate',
+	    key: "componentDidUpdate",
 	    value: function componentDidUpdate() {
 	      if (this.focusAfterRender) {
 	        this.focusContent();
@@ -21414,13 +21602,13 @@
 	      }
 	    }
 	  }, {
-	    key: 'componentWillUnmount',
+	    key: "componentWillUnmount",
 	    value: function componentWillUnmount() {
-	      this.beforeClose();
+	      this.afterClose();
 	      clearTimeout(this.closeTimer);
 	    }
 	  }, {
-	    key: 'beforeOpen',
+	    key: "beforeOpen",
 	    value: function beforeOpen() {
 	      var _props = this.props,
 	          appElement = _props.appElement,
@@ -21434,53 +21622,44 @@
 	        ariaAppHider.hide(appElement);
 	      }
 	    }
-	  }, {
-	    key: 'beforeClose',
-	    value: function beforeClose() {
-	      var _props2 = this.props,
-	          appElement = _props2.appElement,
-	          ariaHideApp = _props2.ariaHideApp,
-	          bodyOpenClassName = _props2.bodyOpenClassName;
-	      // Remove class if no more modals are open
-
-	      bodyClassList.remove(bodyOpenClassName);
-	      // Reset aria-hidden attribute if all modals have been removed
-	      if (ariaHideApp && refCount.totalCount() < 1) {
-	        ariaAppHider.show(appElement);
-	      }
-	    }
 
 	    // Don't steal focus from inner elements
 
 	  }, {
-	    key: 'render',
+	    key: "render",
 	    value: function render() {
-	      var _props3 = this.props,
-	          className = _props3.className,
-	          overlayClassName = _props3.overlayClassName,
-	          defaultStyles = _props3.defaultStyles;
+	      var _props2 = this.props,
+	          className = _props2.className,
+	          overlayClassName = _props2.overlayClassName,
+	          defaultStyles = _props2.defaultStyles;
 
 	      var contentStyles = className ? {} : defaultStyles.content;
 	      var overlayStyles = overlayClassName ? {} : defaultStyles.overlay;
 
 	      return this.shouldBeClosed() ? null : _react2.default.createElement(
-	        'div',
+	        "div",
 	        {
 	          ref: this.setOverlayRef,
-	          className: this.buildClassName('overlay', overlayClassName),
+	          className: this.buildClassName("overlay", overlayClassName),
 	          style: _extends({}, overlayStyles, this.props.style.overlay),
-	          onClick: this.handleOverlayOnClick },
+	          onClick: this.handleOverlayOnClick,
+	          onMouseDown: this.handleOverlayOnMouseDown,
+	          onMouseUp: this.handleOverlayOnMouseUp,
+	          "aria-modal": "true"
+	        },
 	        _react2.default.createElement(
-	          'div',
+	          "div",
 	          _extends({
 	            ref: this.setContentRef,
 	            style: _extends({}, contentStyles, this.props.style.content),
-	            className: this.buildClassName('content', className),
-	            tabIndex: '-1',
+	            className: this.buildClassName("content", className),
+	            tabIndex: "-1",
 	            onKeyDown: this.handleKeyDown,
+	            onMouseDown: this.handleContentOnMouseDown,
+	            onMouseUp: this.handleContentOnMouseUp,
 	            onClick: this.handleContentOnClick,
 	            role: this.props.role,
-	            'aria-label': this.props.contentLabel
+	            "aria-label": this.props.contentLabel
 	          }, this.ariaAttributes(this.props.aria || {})),
 	          this.props.children
 	        )
@@ -21498,37 +21677,41 @@
 	  }
 	};
 	ModalPortal.propTypes = {
-	  isOpen: _propTypes.PropTypes.bool.isRequired,
-	  defaultStyles: _propTypes.PropTypes.shape({
-	    content: _propTypes.PropTypes.object,
-	    overlay: _propTypes.PropTypes.object
+	  isOpen: _propTypes2.default.bool.isRequired,
+	  defaultStyles: _propTypes2.default.shape({
+	    content: _propTypes2.default.object,
+	    overlay: _propTypes2.default.object
 	  }),
-	  style: _propTypes.PropTypes.shape({
-	    content: _propTypes.PropTypes.object,
-	    overlay: _propTypes.PropTypes.object
+	  style: _propTypes2.default.shape({
+	    content: _propTypes2.default.object,
+	    overlay: _propTypes2.default.object
 	  }),
-	  className: _propTypes.PropTypes.oneOfType([_propTypes.PropTypes.string, _propTypes.PropTypes.object]),
-	  overlayClassName: _propTypes.PropTypes.oneOfType([_propTypes.PropTypes.string, _propTypes.PropTypes.object]),
-	  bodyOpenClassName: _propTypes.PropTypes.string,
-	  ariaHideApp: _propTypes.PropTypes.bool,
-	  appElement: _propTypes.PropTypes.instanceOf(_safeHTMLElement2.default),
-	  onAfterOpen: _propTypes.PropTypes.func,
-	  onRequestClose: _propTypes.PropTypes.func,
-	  closeTimeoutMS: _propTypes.PropTypes.number,
-	  shouldCloseOnOverlayClick: _propTypes.PropTypes.bool,
-	  role: _propTypes.PropTypes.string,
-	  contentLabel: _propTypes.PropTypes.string,
-	  aria: _propTypes.PropTypes.object,
-	  children: _propTypes.PropTypes.node
+	  className: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.object]),
+	  overlayClassName: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.object]),
+	  bodyOpenClassName: _propTypes2.default.string,
+	  ariaHideApp: _propTypes2.default.bool,
+	  appElement: _propTypes2.default.instanceOf(_safeHTMLElement2.default),
+	  onAfterOpen: _propTypes2.default.func,
+	  onRequestClose: _propTypes2.default.func,
+	  closeTimeoutMS: _propTypes2.default.number,
+	  shouldFocusAfterRender: _propTypes2.default.bool,
+	  shouldCloseOnOverlayClick: _propTypes2.default.bool,
+	  shouldReturnFocusAfterClose: _propTypes2.default.bool,
+	  role: _propTypes2.default.string,
+	  contentLabel: _propTypes2.default.string,
+	  aria: _propTypes2.default.object,
+	  children: _propTypes2.default.node,
+	  shouldCloseOnEsc: _propTypes2.default.bool
 	};
 	exports.default = ModalPortal;
+	module.exports = exports["default"];
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ }),
-/* 174 */
+/* 175 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -21537,10 +21720,11 @@
 	exports.handleFocus = handleFocus;
 	exports.markForFocusLater = markForFocusLater;
 	exports.returnFocus = returnFocus;
+	exports.popWithoutFocus = popWithoutFocus;
 	exports.setupScopedFocus = setupScopedFocus;
 	exports.teardownScopedFocus = teardownScopedFocus;
 
-	var _tabbable = __webpack_require__(175);
+	var _tabbable = __webpack_require__(176);
 
 	var _tabbable2 = _interopRequireDefault(_tabbable);
 
@@ -21583,24 +21767,30 @@
 	function returnFocus() {
 	  var toFocus = null;
 	  try {
-	    toFocus = focusLaterElements.pop();
-	    toFocus.focus();
+	    if (focusLaterElements.length !== 0) {
+	      toFocus = focusLaterElements.pop();
+	      toFocus.focus();
+	    }
 	    return;
 	  } catch (e) {
-	    console.warn(['You tried to return focus to', toFocus, 'but it is not in the DOM anymore'].join(" "));
+	    console.warn(["You tried to return focus to", toFocus, "but it is not in the DOM anymore"].join(" "));
 	  }
 	}
 	/* eslint-enable no-console */
+
+	function popWithoutFocus() {
+	  focusLaterElements.length > 0 && focusLaterElements.pop();
+	}
 
 	function setupScopedFocus(element) {
 	  modalElement = element;
 
 	  if (window.addEventListener) {
-	    window.addEventListener('blur', handleBlur, false);
-	    document.addEventListener('focus', handleFocus, true);
+	    window.addEventListener("blur", handleBlur, false);
+	    document.addEventListener("focus", handleFocus, true);
 	  } else {
-	    window.attachEvent('onBlur', handleBlur);
-	    document.attachEvent('onFocus', handleFocus);
+	    window.attachEvent("onBlur", handleBlur);
+	    document.attachEvent("onFocus", handleFocus);
 	  }
 	}
 
@@ -21608,19 +21798,19 @@
 	  modalElement = null;
 
 	  if (window.addEventListener) {
-	    window.removeEventListener('blur', handleBlur);
-	    document.removeEventListener('focus', handleFocus);
+	    window.removeEventListener("blur", handleBlur);
+	    document.removeEventListener("focus", handleFocus);
 	  } else {
-	    window.detachEvent('onBlur', handleBlur);
-	    document.detachEvent('onFocus', handleFocus);
+	    window.detachEvent("onBlur", handleBlur);
+	    document.detachEvent("onFocus", handleFocus);
 	  }
 	}
 
 /***/ }),
-/* 175 */
+/* 176 */
 /***/ (function(module, exports) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -21640,15 +21830,22 @@
 
 	var tabbableNode = /input|select|textarea|button|object/;
 
-	function hidden(el) {
-	  return el.offsetWidth <= 0 && el.offsetHeight <= 0 || el.style.display === 'none';
+	function hidesContents(element) {
+	  var zeroSize = element.offsetWidth <= 0 && element.offsetHeight <= 0;
+
+	  // If the node is empty, this is good enough
+	  if (zeroSize && !element.innerHTML) return true;
+
+	  // Otherwise we need to check some styles
+	  var style = window.getComputedStyle(element);
+	  return zeroSize ? style.getPropertyValue("overflow") !== "visible" : style.getPropertyValue("display") == "none";
 	}
 
 	function visible(element) {
 	  var parentElement = element;
 	  while (parentElement) {
 	    if (parentElement === document.body) break;
-	    if (hidden(parentElement)) return false;
+	    if (hidesContents(parentElement)) return false;
 	    parentElement = parentElement.parentNode;
 	  }
 	  return true;
@@ -21661,28 +21858,29 @@
 	}
 
 	function tabbable(element) {
-	  var tabIndex = element.getAttribute('tabindex');
+	  var tabIndex = element.getAttribute("tabindex");
 	  if (tabIndex === null) tabIndex = undefined;
 	  var isTabIndexNaN = isNaN(tabIndex);
 	  return (isTabIndexNaN || tabIndex >= 0) && focusable(element, !isTabIndexNaN);
 	}
 
 	function findTabbableDescendants(element) {
-	  return [].slice.call(element.querySelectorAll('*'), 0).filter(tabbable);
+	  return [].slice.call(element.querySelectorAll("*"), 0).filter(tabbable);
 	}
+	module.exports = exports["default"];
 
 /***/ }),
-/* 176 */
+/* 177 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 	exports.default = scopeTab;
 
-	var _tabbable = __webpack_require__(175);
+	var _tabbable = __webpack_require__(176);
 
 	var _tabbable2 = _interopRequireDefault(_tabbable);
 
@@ -21690,79 +21888,129 @@
 
 	function scopeTab(node, event) {
 	  var tabbable = (0, _tabbable2.default)(node);
+
 	  if (!tabbable.length) {
+	    // Do nothing, since there are no elements that can receive focus.
 	    event.preventDefault();
 	    return;
 	  }
-	  var finalTabbable = tabbable[event.shiftKey ? 0 : tabbable.length - 1];
-	  var leavingFinalTabbable = finalTabbable === document.activeElement ||
-	  // handle immediate shift+tab after opening with mouse
-	  node === document.activeElement;
-	  if (!leavingFinalTabbable) return;
+
+	  var shiftKey = event.shiftKey;
+	  var head = tabbable[0];
+	  var tail = tabbable[tabbable.length - 1];
+
+	  // proceed with default browser behavior
+	  if (node === document.activeElement) {
+	    return;
+	  }
+
+	  var target;
+	  if (tail === document.activeElement && !shiftKey) {
+	    target = head;
+	  }
+
+	  if (head === document.activeElement && shiftKey) {
+	    target = tail;
+	  }
+
+	  if (target) {
+	    event.preventDefault();
+	    target.focus();
+	    return;
+	  }
+
+	  // Safari radio issue.
+	  //
+	  // Safari does not move the focus to the radio button,
+	  // so we need to force it to really walk through all elements.
+	  //
+	  // This is very error prune, since we are trying to guess
+	  // if it is a safari browser from the first occurence between
+	  // chrome or safari.
+	  //
+	  // The chrome user agent contains the first ocurrence
+	  // as the 'chrome/version' and later the 'safari/version'.
+	  var checkSafari = /(\bChrome\b|\bSafari\b)\//.exec(navigator.userAgent);
+	  var isSafariDesktop = checkSafari != null && checkSafari[1] != "Chrome" && /\biPod\b|\biPad\b/g.exec(navigator.userAgent) == null;
+
+	  // If we are not in safari desktop, let the browser control
+	  // the focus
+	  if (!isSafariDesktop) return;
+
+	  var x = tabbable.indexOf(document.activeElement);
+
+	  if (x > -1) {
+	    x += shiftKey ? -1 : 1;
+	  }
+
 	  event.preventDefault();
-	  var target = tabbable[event.shiftKey ? tabbable.length - 1 : 0];
-	  target.focus();
+
+	  tabbable[x].focus();
 	}
+	module.exports = exports["default"];
 
 /***/ }),
-/* 177 */
-/***/ (function(module, exports) {
+/* 178 */
+/***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 	exports.assertNodeList = assertNodeList;
 	exports.setElement = setElement;
-	exports.tryForceFallback = tryForceFallback;
 	exports.validateElement = validateElement;
 	exports.hide = hide;
 	exports.show = show;
 	exports.documentNotReadyOrSSRTesting = documentNotReadyOrSSRTesting;
 	exports.resetForTesting = resetForTesting;
+
+	var _warning = __webpack_require__(179);
+
+	var _warning2 = _interopRequireDefault(_warning);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 	var globalElement = null;
 
 	function assertNodeList(nodeList, selector) {
 	  if (!nodeList || !nodeList.length) {
-	    throw new Error('react-modal: No elements were found for selector ' + selector + '.');
+	    throw new Error("react-modal: No elements were found for selector " + selector + ".");
 	  }
 	}
 
 	function setElement(element) {
 	  var useElement = element;
-	  if (typeof useElement === 'string') {
+	  if (typeof useElement === "string") {
 	    var el = document.querySelectorAll(useElement);
 	    assertNodeList(el, useElement);
-	    useElement = 'length' in el ? el[0] : el;
+	    useElement = "length" in el ? el[0] : el;
 	  }
 	  globalElement = useElement || globalElement;
 	  return globalElement;
 	}
 
-	function tryForceFallback() {
-	  if (document && document.body) {
-	    // force fallback to document.body
-	    setElement(document.body);
-	    return true;
-	  }
-	  return false;
-	}
-
 	function validateElement(appElement) {
-	  if (!appElement && !globalElement && !tryForceFallback()) {
-	    throw new Error(['react-modal: Cannot fallback to `document.body`, because it\'s not ready or available.', 'If you are doing server-side rendering, use this function to defined an element.', '`Modal.setAppElement(el)` to make this accessible']);
+	  if (!appElement && !globalElement) {
+	    (0, _warning2.default)(false, ["react-modal: App element is not defined.", "Please use `Modal.setAppElement(el)` or set `appElement={el}`.", "This is needed so screen readers don't see main content", "when modal is opened. It is not recommended, but you can opt-out", "by setting `ariaHideApp={false}`."].join(" "));
+
+	    return false;
 	  }
+
+	  return true;
 	}
 
 	function hide(appElement) {
-	  validateElement(appElement);
-	  (appElement || globalElement).setAttribute('aria-hidden', 'true');
+	  if (validateElement(appElement)) {
+	    (appElement || globalElement).setAttribute("aria-hidden", "true");
+	  }
 	}
 
 	function show(appElement) {
-	  validateElement(appElement);
-	  (appElement || globalElement).removeAttribute('aria-hidden');
+	  if (validateElement(appElement)) {
+	    (appElement || globalElement).removeAttribute("aria-hidden");
+	  }
 	}
 
 	function documentNotReadyOrSSRTesting() {
@@ -21770,11 +22018,78 @@
 	}
 
 	function resetForTesting() {
-	  globalElement = document.body;
+	  globalElement = null;
 	}
 
 /***/ }),
-/* 178 */
+/* 179 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {/**
+	 * Copyright 2014-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 */
+
+	'use strict';
+
+	/**
+	 * Similar to invariant but only logs a warning if the condition is not met.
+	 * This can be used to log issues in development environments in critical
+	 * paths. Removing the logging code for production environments will keep the
+	 * same logic and follow the same code paths.
+	 */
+
+	var warning = function() {};
+
+	if (process.env.NODE_ENV !== 'production') {
+	  warning = function(condition, format, args) {
+	    var len = arguments.length;
+	    args = new Array(len > 2 ? len - 2 : 0);
+	    for (var key = 2; key < len; key++) {
+	      args[key - 2] = arguments[key];
+	    }
+	    if (format === undefined) {
+	      throw new Error(
+	        '`warning(condition, format, ...args)` requires a warning ' +
+	        'message argument'
+	      );
+	    }
+
+	    if (format.length < 10 || (/^[s\W]*$/).test(format)) {
+	      throw new Error(
+	        'The warning format should be able to uniquely identify this ' +
+	        'warning. Please, use a more descriptive format than: ' + format
+	      );
+	    }
+
+	    if (!condition) {
+	      var argIndex = 0;
+	      var message = 'Warning: ' +
+	        format.replace(/%s/g, function() {
+	          return args[argIndex++];
+	        });
+	      if (typeof console !== 'undefined') {
+	        console.error(message);
+	      }
+	      try {
+	        // This error was thrown as a convenience so that you can use this stack
+	        // to find the callsite that caused this warning to fire.
+	        throw new Error(message);
+	      } catch(x) {}
+	    }
+	  };
+	}
+
+	module.exports = warning;
+
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
+
+/***/ }),
+/* 180 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -21815,10 +22130,10 @@
 	}
 
 /***/ }),
-/* 179 */
+/* 181 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -21826,7 +22141,7 @@
 	exports.add = add;
 	exports.remove = remove;
 
-	var _refCount = __webpack_require__(178);
+	var _refCount = __webpack_require__(180);
 
 	var refCount = _interopRequireWildcard(_refCount);
 
@@ -21834,7 +22149,7 @@
 
 	function add(bodyClass) {
 	  // Increment class(es) on refCount tracker and add class(es) to body
-	  bodyClass.split(' ').map(refCount.add).forEach(function (className) {
+	  bodyClass.split(" ").map(refCount.add).forEach(function (className) {
 	    return document.body.classList.add(className);
 	  });
 	}
@@ -21843,7 +22158,7 @@
 	  var classListMap = refCount.get();
 	  // Decrement class(es) from the refCount tracker
 	  // and remove unused class(es) from body
-	  bodyClass.split(' ').map(refCount.remove).filter(function (className) {
+	  bodyClass.split(" ").map(refCount.remove).filter(function (className) {
 	    return classListMap[className] === 0;
 	  }).forEach(function (className) {
 	    return document.body.classList.remove(className);
@@ -21851,16 +22166,17 @@
 	}
 
 /***/ }),
-/* 180 */
+/* 182 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.canUseDOM = undefined;
 
-	var _exenv = __webpack_require__(181);
+	var _exenv = __webpack_require__(183);
 
 	var _exenv2 = _interopRequireDefault(_exenv);
 
@@ -21870,10 +22186,12 @@
 
 	var SafeHTMLElement = EE.canUseDOM ? window.HTMLElement : {};
 
+	var canUseDOM = exports.canUseDOM = EE.canUseDOM;
+
 	exports.default = SafeHTMLElement;
 
 /***/ }),
-/* 181 */
+/* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -21881,6 +22199,7 @@
 	  Based on code that is Copyright 2013-2015, Facebook, Inc.
 	  All rights reserved.
 	*/
+	/* global define */
 
 	(function () {
 		'use strict';
@@ -21918,10 +22237,10 @@
 
 
 /***/ }),
-/* 182 */
+/* 184 */
 /***/ (function(module, exports) {
 
-	/* WEBPACK VAR INJECTION */(function(__dirname) {'use strict';
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -21934,7 +22253,7 @@
 	    github: 'https://github.com/ttalhouk/notes-app',
 	    web: "https://note-taker-ttalhouk.herokuapp.com/"
 	  },
-	  image: __dirname + 'projects/public/images/note-taker.png'
+	  image: 'projects/public/images/note-taker.png'
 	}, {
 	  title: 'Best Friend Tales',
 	  description: 'Web site developed to help find homes for pets and for pet owners to post topics and comment on each other\'s articles. Best Friend Tales is a Sinatra app using PostgreSQL database for storing user information and pet data for those users. The site integrates the Petfinder API and SendGrid for sending emails to the shelters.  View project with the links below.',
@@ -21943,7 +22262,7 @@
 	    github: 'https://github.com/kelsonic/Best-Friend-Tales',
 	    web: "http://www.bftales.com"
 	  },
-	  image: __dirname + 'projects/public/images/bftales.png'
+	  image: 'projects/public/images/bftales.png'
 	}, {
 	  title: 'Board Game Social',
 	  description: 'Web site developed to help allow users to track their boardgames and manage lending and borrowing of them to mutual friends. Built using Rails and a PostgreSQL database for storing user information and relationships. Connected to the Board Game Geek database for looking up titles and user collections.',
@@ -21952,7 +22271,7 @@
 	    github: "https://github.com/ttalhouk/boardgame-social",
 	    web: "https://boardgame-social.herokuapp.com/"
 	  },
-	  image: __dirname + 'projects/public/images/bgs.png'
+	  image: 'projects/public/images/bgs.png'
 	}, {
 	  title: 'Game On',
 	  description: 'Mobile application developed to help team organizers and team members manage recreational games.  Built using React Native for IOS for the front end and Rails backend API, it allows team managers to set up games and challenge other teams.  Through an RSVP system, teams that have enough RSVP\'s are paired together.  There is an in app chat room to chat with others on your team using Firebase. This was built over the course of a week as a final project where I was team lead of a group of 4. Work was done using Agile team concepts to work on bite size pieces of the project and bring it all together.',
@@ -21960,7 +22279,7 @@
 	  links: {
 	    github: "https://github.com/ttalhouk/Game_On"
 	  },
-	  image: __dirname + 'projects/public/images/game-on.png'
+	  image: 'projects/public/images/game-on.png'
 	}, {
 	  title: 'Exoplanet',
 	  description: 'Rails application built to demonstrate data visualization.  Using NASA exoplanet data and highcharts to create graphs, and charts to help bring the data into views allowing for meaningful conclusions to be drawn.  This was built as part of a lightning talk demo.',
@@ -21969,17 +22288,16 @@
 	    github: "https://github.com/kelsonic/exoplanet-analysis",
 	    web: "https://exoplanet-analysis.herokuapp.com/"
 	  },
-	  image: __dirname + 'projects/public/images/exo2.jpg'
+	  image: 'projects/public/images/exo2.jpg'
 	}, {
 	  title: 'Noodle Doodle',
 	  description: 'A desktop Doodle application built using Javascript and Canvas. Allows users to make doodles using different colors and save them to their desktop.',
 	  keywords: ['Javascript', 'Canvas'],
 	  links: {
-	    web: __dirname + "resources/public/doodle"
+	    web: "resources/public/doodle/index.html"
 	  },
-	  image: __dirname + 'projects/public/images/noodle.png'
+	  image: 'projects/public/images/noodle.png'
 	}];
-	/* WEBPACK VAR INJECTION */}.call(exports, "/"))
 
 /***/ })
 /******/ ]);

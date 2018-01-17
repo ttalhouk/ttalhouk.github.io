@@ -7,7 +7,7 @@ export const projects = [
       github: 'https://github.com/ttalhouk/notes-app',
       web: "https://note-taker-ttalhouk.herokuapp.com/"
     },
-    image: 'projects/public/images/note-taker.png'
+    image: __dirname + 'projects/public/images/note-taker.png'
   },
   {
     title: 'Best Friend Tales',
@@ -17,7 +17,7 @@ export const projects = [
       github: 'https://github.com/kelsonic/Best-Friend-Tales',
       web: "http://www.bftales.com"
     },
-    image: 'projects/public/images/bftales.png'
+    image: __dirname + 'projects/public/images/bftales.png'
   },
   {
     title: 'Board Game Social',
@@ -27,7 +27,7 @@ export const projects = [
       github: "https://github.com/ttalhouk/boardgame-social",
       web: "https://boardgame-social.herokuapp.com/"
     },
-    image: 'projects/public/images/bgs.png'
+    image: __dirname + 'projects/public/images/bgs.png'
   },
   {
     title: 'Game On',
@@ -36,7 +36,7 @@ export const projects = [
     links: {
       github:"https://github.com/ttalhouk/Game_On"
     },
-    image: 'projects/public/images/game-on.png'
+    image: __dirname + 'projects/public/images/game-on.png'
   },
   {
     title: 'Exoplanet',
@@ -46,15 +46,15 @@ export const projects = [
       github:"https://github.com/kelsonic/exoplanet-analysis",
       web: "https://exoplanet-analysis.herokuapp.com/"
     },
-    image: 'projects/public/images/exo2.jpg'
+    image: __dirname + 'projects/public/images/exo2.jpg'
   },
   {
     title: 'Noodle Doodle',
     description: 'A desktop Doodle application built using Javascript and Canvas. Allows users to make doodles using different colors and save them to their desktop.',
     keywords: ['Javascript', 'Canvas'],
     links: {
-      web: "resources/public/doodle/index.html"
+      web: __dirname + "resources/public/doodle"
     },
-    image: 'projects/public/images/noodle.png'
+    image: __dirname + 'projects/public/images/noodle.png'
   }
 ]
